@@ -1128,23 +1128,52 @@ Could you spare 30 seconds to rate us? It means the world to small businesses li
           <div class="card-title">📋 Bulk Send via CSV</div>
           <a href="#" onclick="downloadCSVTemplate();return false;" style="font-size:.75rem;color:#15803d;font-weight:600;">Download template</a>
         </div>
-        <div style="font-size:.78rem;color:#6b7280;margin-bottom:1rem;line-height:1.6;">Upload a CSV with columns <code style="background:#f5f5f5;padding:.1rem .4rem;border-radius:4px;">name,phone</code> to send WhatsApp review requests to multiple customers at once.</div>
-        <div id="csv-drop-zone" style="border:2px dashed #e8ecf0;border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;background:#fafafa;" onclick="document.getElementById('csv-file-input').click()" ondragover="event.preventDefault();this.style.borderColor='#25D366'" ondragleave="this.style.borderColor='#e8ecf0'" ondrop="handleCSVDrop(event)">
-          <div style="font-size:2rem;margin-bottom:.5rem;">📄</div>
+        <div style="font-size:.78rem;color:#6b7280;margin-bottom:1rem;line-height:1.6;">Upload a CSV with columns <code style="background:#f5f5f5;padding:.1rem .4rem;border-radius:4px;">name,phone</code>. Messages open one by one in WhatsApp — you hit Send for each.</div>
+
+        <!-- Drop zone -->
+        <div id="csv-drop-zone" style="border:2px dashed #e8ecf0;border-radius:12px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color .2s;background:#fafafa;" onclick="document.getElementById('csv-file-input').click()" ondragover="event.preventDefault();this.style.borderColor='#25D366'" ondragleave="this.style.borderColor='#e8ecf0'" ondrop="handleCSVDrop(event)">
+          <div style="font-size:1.5rem;margin-bottom:.35rem;">📄</div>
           <div style="font-size:.85rem;font-weight:600;color:#374151;">Click to upload or drag & drop</div>
-          <div style="font-size:.72rem;color:#9ca3af;margin-top:.25rem;">CSV files only · name, phone columns required</div>
+          <div style="font-size:.72rem;color:#9ca3af;margin-top:.2rem;">CSV files only · name, phone columns required</div>
           <input type="file" id="csv-file-input" accept=".csv" style="display:none" onchange="handleCSVFile(this)">
         </div>
+
+        <!-- Contacts table + controls -->
         <div id="csv-preview" style="display:none;margin-top:1rem;">
-          <div style="font-size:.8rem;font-weight:600;color:#0a0a0a;margin-bottom:.5rem;" id="csv-preview-title"></div>
-          <div style="max-height:200px;overflow-y:auto;border:1px solid #e8ecf0;border-radius:8px;margin-bottom:.75rem;">
-            <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
-              <thead><tr><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Name</th><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Phone</th><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Status</th></tr></thead>
-              <tbody id="csv-preview-table"></tbody>
-            </table>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;">
+            <div style="font-size:.82rem;font-weight:700;color:#0a0a0a;" id="csv-preview-title"></div>
+            <button onclick="csvReset()" style="background:none;border:1px solid #e8ecf0;border-radius:7px;padding:.25rem .7rem;font-size:.72rem;color:#6b7280;cursor:pointer;">✕ Clear</button>
           </div>
-          <button id="csv-send-btn" onclick="sendCSVBatch()" style="width:100%;padding:.8rem;background:#25D366;border:none;border-radius:10px;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 12px rgba(37,211,102,.25);">Send to all contacts →</button>
-          <div id="csv-progress" style="display:none;margin-top:.75rem;"></div>
+
+          <!-- Contact rows -->
+          <div style="border:1px solid #e8ecf0;border-radius:10px;overflow:hidden;margin-bottom:.85rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr auto auto;gap:0;background:#f5f7fa;padding:.5rem .75rem;font-size:.68rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">
+              <span>Name</span><span>Phone</span><span style="text-align:center;">Status</span><span></span>
+            </div>
+            <div id="csv-contacts-list" style="max-height:320px;overflow-y:auto;"></div>
+          </div>
+
+          <!-- Progress bar -->
+          <div id="csv-progress-bar-wrap" style="display:none;margin-bottom:.75rem;">
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;color:#6b7280;margin-bottom:.35rem;">
+              <span id="csv-progress-text">Sending...</span>
+              <span id="csv-progress-count"></span>
+            </div>
+            <div style="background:#f0f0f0;border-radius:100px;height:6px;">
+              <div id="csv-progress-bar" style="height:6px;border-radius:100px;background:linear-gradient(90deg,#25D366,#4ade80);width:0%;transition:width .4s;"></div>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div id="csv-action-btns" style="display:flex;gap:.6rem;">
+            <button id="csv-send-btn" onclick="sendCSVBatch()" style="flex:1;padding:.85rem;background:#25D366;border:none;border-radius:10px;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 12px rgba(37,211,102,.25);">
+              💬 Send to all contacts
+            </button>
+            <button id="csv-next-btn" onclick="csvSendNext()" style="display:none;flex:1;padding:.85rem;background:#25D366;border:none;border-radius:10px;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer;">
+              Send next →
+            </button>
+          </div>
+          <div id="csv-done-msg" style="display:none;background:#f0fdf4;border:1px solid #d1fae5;border-radius:10px;padding:.85rem 1rem;font-size:.82rem;color:#15803d;font-weight:600;text-align:center;margin-top:.6rem;"></div>
         </div>
       </div>
 
@@ -1407,19 +1436,29 @@ var appState = {
   sends: [], customers: [], stats: { sent:0, opened:0, reviews:0, feedback:0 },
   selectedStar: 0, currentUser: null, currentSendId: null
 };
-try {
-  var _sv = localStorage.getItem('rbp_state');
-  if(_sv) { var _ps = JSON.parse(_sv); appState = Object.assign(appState, _ps); }
-} catch(e) {}
+// NOTE: Don't load localStorage at startup - load it only after we know which user is logged in
 
 function saveState() {
+  if(!appState.currentUser) return; // Never save without a logged-in user
   try {
-    localStorage.setItem('rbp_state', JSON.stringify({
+    var key = 'rbp_state_' + appState.currentUser.id; // Per-user storage key
+    localStorage.setItem(key, JSON.stringify({
       bizName: appState.bizName, googleLink: appState.googleLink,
       messageTemplate: appState.messageTemplate,
       sends: appState.sends.slice(-50), customers: appState.customers.slice(-50),
       stats: appState.stats
     }));
+  } catch(e) {}
+}
+
+function loadStateForUser(userId) {
+  try {
+    var key = 'rbp_state_' + userId;
+    var _sv = localStorage.getItem(key);
+    if(_sv) {
+      var _ps = JSON.parse(_sv);
+      appState = Object.assign(appState, _ps);
+    }
   } catch(e) {}
 }
 
@@ -1600,13 +1639,28 @@ async function doLogin() {
 
 async function doSignOut() {
   if(sb) await sb.auth.signOut();
-  appState.currentUser = null;
+  if(appState.currentUser) {
+    localStorage.removeItem('rbp_state_' + appState.currentUser.id);
+  }
+  // Also remove old shared key if it exists
   localStorage.removeItem('rbp_state');
+  appState.currentUser = null;
+  appState.sends = [];
+  appState.customers = [];
+  appState.stats = { sent:0, opened:0, reviews:0, feedback:0 };
   showLanding();
 }
 
 async function loadAndGoToDashboard() {
   if(sb && appState.currentUser) {
+    // Reset sends/customers/stats - always load fresh from Supabase
+    appState.sends = [];
+    appState.customers = [];
+    appState.stats = { sent:0, opened:0, reviews:0, feedback:0 };
+
+    // Load per-user cached state (bizName, googleLink, template only)
+    loadStateForUser(appState.currentUser.id);
+
     var r = await sb.from('profiles').select('*').eq('id', appState.currentUser.id).single();
     if(r.data && r.data.business_name) {
       // Profile exists — load it
@@ -1866,16 +1920,18 @@ function renderTables(){
 
 // ═══ CSV BULK SEND ═══
 var _csvContacts = [];
+var _csvCurrentIdx = 0;
+var _csvSending = false;
 
 function parseCSV(text) {
   var lines = text.trim().split('\n');
   if(lines.length < 2) return [];
   var headers = lines[0].toLowerCase().split(',').map(function(h){return h.trim().replace(/"/g,'');});
   var nameIdx = headers.indexOf('name'); var phoneIdx = headers.indexOf('phone');
-  if(nameIdx<0||phoneIdx<0) return null; // invalid
+  if(nameIdx<0||phoneIdx<0) return null;
   return lines.slice(1).map(function(line){
     var cols = line.split(',').map(function(c){return c.trim().replace(/"/g,'');});
-    return {name:cols[nameIdx]||'', phone:cols[phoneIdx]||''};
+    return {name:cols[nameIdx]||'', phone:cols[phoneIdx]||'', status:'pending'};
   }).filter(function(c){return c.name&&c.phone;});
 }
 
@@ -1897,55 +1953,133 @@ function processCSVFile(file) {
     if(!contacts) { showToast('CSV must have "name" and "phone" columns'); return; }
     if(contacts.length === 0) { showToast('No valid contacts found in CSV'); return; }
     _csvContacts = contacts;
+    _csvCurrentIdx = 0;
+    _csvSending = false;
+    renderCSVContacts();
     var title = document.getElementById('csv-preview-title');
-    var tbody = document.getElementById('csv-preview-table');
-    var preview = document.getElementById('csv-preview');
-    var btn = document.getElementById('csv-send-btn');
-    if(title) title.textContent = contacts.length + ' contacts loaded — ready to send';
-    if(btn) btn.textContent = '💬 Send WhatsApp to ' + contacts.length + ' contacts →';
-    if(tbody) tbody.innerHTML = contacts.slice(0,20).map(function(c){
-      return '<tr><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;font-weight:500;">'+c.name+'</td><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;color:#6b7280;">'+c.phone+'</td><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;"><span style="background:#f0f0f0;color:#6b7280;font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;">Pending</span></td></tr>';
-    }).join('') + (contacts.length>20 ? '<tr><td colspan="3" style="padding:.5rem .75rem;color:#9ca3af;font-size:.75rem;">...and '+(contacts.length-20)+' more</td></tr>' : '');
-    if(preview) preview.style.display = 'block';
+    if(title) title.textContent = contacts.length + ' contacts loaded';
+    document.getElementById('csv-preview').style.display = 'block';
+    document.getElementById('csv-drop-zone').style.display = 'none';
+    document.getElementById('csv-send-btn').style.display = 'block';
+    document.getElementById('csv-next-btn').style.display = 'none';
+    document.getElementById('csv-done-msg').style.display = 'none';
+    document.getElementById('csv-progress-bar-wrap').style.display = 'none';
   };
   reader.readAsText(file);
 }
 
+function renderCSVContacts() {
+  var list = document.getElementById('csv-contacts-list');
+  if(!list) return;
+  list.innerHTML = _csvContacts.map(function(c, i) {
+    var statusHtml = '';
+    if(c.status === 'pending') {
+      statusHtml = '<span style="background:#f5f5f5;color:#9ca3af;font-size:.65rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;">Pending</span>';
+    } else if(c.status === 'sending') {
+      statusHtml = '<span style="background:#fef9c3;color:#a16207;font-size:.65rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;">⏳ Opening...</span>';
+    } else if(c.status === 'sent') {
+      statusHtml = '<span style="background:#f0fdf4;color:#15803d;font-size:.65rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;">✓ Sent</span>';
+    } else if(c.status === 'skipped') {
+      statusHtml = '<span style="background:#fef2f2;color:#ef4444;font-size:.65rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;">Skipped</span>';
+    }
+    var isActive = i === _csvCurrentIdx && _csvSending;
+    var rowBg = isActive ? 'background:#f0fdf4;' : (c.status==='sent'?'background:#fafffe;':'');
+    return '<div id="csv-row-'+i+'" style="display:grid;grid-template-columns:1fr 1fr auto auto;gap:.5rem;align-items:center;padding:.6rem .75rem;border-bottom:1px solid #f5f5f5;'+rowBg+'">'
+      + '<span style="font-size:.82rem;font-weight:'+(isActive?'700':'500')+';">' + c.name + '</span>'
+      + '<span style="font-size:.78rem;color:#6b7280;">' + c.phone + '</span>'
+      + '<span>' + statusHtml + '</span>'
+      + '<button onclick="csvSendOne('+i+')" style="background:none;border:1px solid #d1fae5;border-radius:7px;padding:.2rem .6rem;font-size:.72rem;color:#15803d;cursor:pointer;font-weight:600;white-space:nowrap;'+(c.status==='sent'?'opacity:.4;pointer-events:none;':'')+'">Send</button>'
+      + '</div>';
+  }).join('');
+}
+
+function csvSendOne(idx) {
+  if(idx >= _csvContacts.length) return;
+  var c = _csvContacts[idx];
+  var phone = c.phone.replace(/\D/g,'');
+  if(!phone) { _csvContacts[idx].status = 'skipped'; renderCSVContacts(); return; }
+
+  var template = (document.getElementById('msg-template')||{}).value || appState.messageTemplate;
+  var reviewLink = 'https://reviewboost.in/?review=true&biz='+encodeURIComponent(appState.bizName);
+  if(appState.googleLink) reviewLink += '&gl='+encodeURIComponent(appState.googleLink);
+  var msg = template.replace(/{name}/g,c.name).replace(/{business}/g,appState.bizName).replace(/{review_link}/g,reviewLink);
+  window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+
+  _csvContacts[idx].status = 'sent';
+  var now = new Date();
+  var ts = now.getHours()+':'+String(now.getMinutes()).padStart(2,'0')+', '+now.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+  appState.sends.push({id:'local_'+Date.now()+'_'+idx,name:c.name,phone:phone,time:ts,status:'Sent',rating:0});
+  appState.customers.push({name:c.name,phone:phone,time:ts});
+  appState.stats.sent++;
+  saveState();
+  renderCSVContacts();
+  updateProgressBar();
+}
+
+function updateProgressBar() {
+  var sent = _csvContacts.filter(function(c){return c.status==='sent'||c.status==='skipped';}).length;
+  var pct = Math.round(sent/_csvContacts.length*100);
+  var bar = document.getElementById('csv-progress-bar');
+  var txt = document.getElementById('csv-progress-text');
+  var cnt = document.getElementById('csv-progress-count');
+  if(bar) bar.style.width = pct+'%';
+  if(cnt) cnt.textContent = sent+' / '+_csvContacts.length;
+  if(txt) txt.textContent = sent === _csvContacts.length ? '✅ All done!' : 'Sending...';
+  if(sent === _csvContacts.length) {
+    _csvSending = false;
+    document.getElementById('csv-next-btn').style.display = 'none';
+    document.getElementById('csv-done-msg').style.display = 'block';
+    document.getElementById('csv-done-msg').textContent = '✅ All '+_csvContacts.length+' contacts messaged! Hit Send in each WhatsApp tab.';
+    renderTables(); animateStats();
+  }
+}
+
 function sendCSVBatch() {
   if(!_csvContacts||!_csvContacts.length) return;
-  var progress = document.getElementById('csv-progress');
-  var btn = document.getElementById('csv-send-btn');
-  var tbody = document.getElementById('csv-preview-table');
-  if(btn) btn.style.display = 'none';
+  _csvSending = true;
+  _csvCurrentIdx = 0;
+  document.getElementById('csv-send-btn').style.display = 'none';
+  document.getElementById('csv-next-btn').style.display = 'block';
+  document.getElementById('csv-progress-bar-wrap').style.display = 'block';
+  document.getElementById('csv-progress-bar').style.width = '0%';
+  document.getElementById('csv-progress-count').textContent = '0 / '+_csvContacts.length;
+  document.getElementById('csv-progress-text').textContent = 'Ready — click "Send next" for each contact';
+  // Auto-send first one
+  csvSendNext();
+}
 
-  var i = 0;
-  var template = (document.getElementById('msg-template')||{}).value || appState.messageTemplate;
-
-  function sendNext() {
-    if(i >= _csvContacts.length) {
-      if(progress) progress.innerHTML = '<div style="background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.75rem 1rem;font-size:.82rem;color:#15803d;font-weight:600;">✅ All '+_csvContacts.length+' WhatsApp messages opened! Check each tab and hit Send.</div>';
-      renderTables(); animateStats();
-      return;
-    }
-    var c = _csvContacts[i];
-    var phone = c.phone.replace(/\D/g,'');
-    if(phone) {
-      var reviewLink='https://reviewboost.in/?review=true&biz='+encodeURIComponent(appState.bizName);
-      if(appState.googleLink) reviewLink+='&gl='+encodeURIComponent(appState.googleLink);
-      var msg = template.replace(/{name}/g,c.name).replace(/{business}/g,appState.bizName).replace(/{review_link}/g,reviewLink);
-      window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
-      var now=new Date();
-      var ts=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0')+', '+now.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-      appState.sends.push({id:'local_'+Date.now()+'_'+i,name:c.name,phone:phone,time:ts,status:'Sent',rating:0});
-      appState.customers.push({name:c.name,phone:phone,time:ts});
-      appState.stats.sent++;
-    }
-    if(progress) progress.innerHTML = '<div style="background:#f5f7fa;border-radius:8px;padding:.6rem 1rem;font-size:.8rem;color:#6b7280;">Opening '+(i+1)+' of '+_csvContacts.length+' — <strong>'+c.name+'</strong></div>';
-    i++;
-    setTimeout(sendNext, 800);
+function csvSendNext() {
+  // Find next pending contact
+  while(_csvCurrentIdx < _csvContacts.length && _csvContacts[_csvCurrentIdx].status !== 'pending') {
+    _csvCurrentIdx++;
   }
-  saveState();
-  sendNext();
+  if(_csvCurrentIdx >= _csvContacts.length) {
+    updateProgressBar();
+    return;
+  }
+  _csvContacts[_csvCurrentIdx].status = 'sending';
+  renderCSVContacts();
+  // Scroll to active row
+  var row = document.getElementById('csv-row-'+_csvCurrentIdx);
+  if(row) row.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  csvSendOne(_csvCurrentIdx);
+  _csvCurrentIdx++;
+  updateProgressBar();
+
+  // Update next button label
+  var remaining = _csvContacts.filter(function(c){return c.status==='pending';}).length;
+  var btn = document.getElementById('csv-next-btn');
+  if(btn && remaining > 0) btn.textContent = 'Send next → ('+remaining+' left)';
+}
+
+function csvReset() {
+  _csvContacts = [];
+  _csvCurrentIdx = 0;
+  _csvSending = false;
+  document.getElementById('csv-preview').style.display = 'none';
+  document.getElementById('csv-drop-zone').style.display = 'block';
+  document.getElementById('csv-file-input').value = '';
 }
 
 function downloadCSVTemplate() {
