@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EG69HH90M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7EG69HH90M');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Clinic Doesn't Show Up on Google Maps (And How to Fix It) | ReviewBoost Blog</title>
+<meta name="description" content="If your clinic is invisible on Google Maps, here are the exact reasons why — and step-by-step fixes any doctor in India can do today without hiring an agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.back-link{display:flex;align-items:center;gap:.4rem;font-size:.83rem;font-weight:600;color:#6b7280;text-decoration:none;transition:color .2s;}
+.back-link:hover{color:#16a34a;}
+.nav-cta{background:#22c55e;color:#fff;border:none;border-radius:10px;padding:.55rem 1.2rem;font-size:.85rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+.blog-hero{padding:7rem 1.5rem 4rem;max-width:760px;margin:0 auto;text-align:center;}
+.blog-tag{display:inline-flex;align-items:center;gap:.4rem;background:#fef2f2;border:1px solid #fecaca;border-radius:100px;padding:.3rem .9rem;font-size:.75rem;font-weight:700;color:#dc2626;letter-spacing:.04em;margin-bottom:1.5rem;}
+.blog-hero h1{font-family:'Lora',serif;font-size:clamp(2rem,5vw,3rem);font-weight:600;line-height:1.25;color:#111;margin-bottom:1.25rem;letter-spacing:-.01em;}
+.blog-hero h1 em{font-style:italic;color:#16a34a;}
+.blog-meta{display:flex;align-items:center;justify-content:center;gap:1.25rem;font-size:.8rem;color:#9ca3af;flex-wrap:wrap;}
+.blog-meta-dot{width:4px;height:4px;border-radius:50%;background:#d1d5db;}
+.author-chip{display:flex;align-items:center;gap:.5rem;}
+.author-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff;}
+
+.blog-cover{max-width:860px;margin:0 auto;padding:0 1.5rem 3rem;}
+.cover-card{background:linear-gradient(135deg,#fef2f2 0%,#fff1f2 100%);border:1.5px solid #fecaca;border-radius:20px;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cover-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(239,68,68,.08),transparent 70%);pointer-events:none;}
+.cover-stat-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.cover-stat{background:#fff;border:1.5px solid #fecaca;border-radius:14px;padding:1.25rem 2rem;text-align:center;}
+.cover-stat-num{font-size:2.2rem;font-weight:900;color:#dc2626;line-height:1;margin-bottom:.25rem;}
+.cover-stat-label{font-size:.75rem;color:#6b7280;font-weight:600;}
+
+.article-wrap{max-width:700px;margin:0 auto;padding:0 1.5rem 5rem;}
+.article-body{font-family:'Lora',serif;font-size:1.05rem;line-height:1.85;color:#374151;}
+.article-body h2{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:800;color:#111;margin:2.5rem 0 .85rem;line-height:1.3;}
+.article-body h3{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:700;color:#111;margin:2rem 0 .6rem;}
+.article-body p{margin-bottom:1.4rem;}
+.article-body strong{font-weight:700;color:#111;}
+.article-body ul{margin:1rem 0 1.4rem 1.5rem;}
+.article-body ul li{margin-bottom:.6rem;line-height:1.7;}
+.article-body ol{margin:1rem 0 1.4rem 1.5rem;}
+.article-body ol li{margin-bottom:.7rem;line-height:1.7;}
+
+.callout{border-radius:14px;padding:1.25rem 1.5rem;margin:2rem 0;font-family:'DM Sans',sans-serif;font-size:.92rem;line-height:1.7;}
+.callout-green{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;}
+.callout-red{background:#fef2f2;border:1.5px solid #fecaca;color:#991b1b;}
+.callout-orange{background:#fff7ed;border:1.5px solid #fed7aa;color:#9a3412;}
+.callout-blue{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af;}
+.callout-title{font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.6rem;display:block;}
+
+/* FIX CARDS */
+.fix-list{display:flex;flex-direction:column;gap:.85rem;margin:1.5rem 0 2rem;}
+.fix-card{display:flex;gap:1rem;align-items:flex-start;border-radius:12px;padding:1.1rem 1.25rem;border:1px solid #f0f0f0;}
+.fix-card.bad{background:#fef9f9;border-color:#fee2e2;}
+.fix-card.good{background:#f0fdf4;border-color:#d1fae5;}
+.fix-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:.1rem;}
+.fix-icon.bad{background:#fee2e2;}
+.fix-icon.good{background:#dcfce7;}
+.fix-content{font-family:'DM Sans',sans-serif;font-size:.88rem;line-height:1.65;color:#374151;}
+.fix-content strong{color:#111;}
+
+/* REASON CARDS */
+.reason-cards{display:flex;flex-direction:column;gap:1.5rem;margin:1.5rem 0 2rem;}
+.reason-card{border-radius:14px;padding:1.4rem 1.5rem;border:1px solid #f0f0f0;background:#fafafa;}
+.reason-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem;}
+.reason-num{width:28px;height:28px;border-radius:8px;background:#dc2626;color:#fff;font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.reason-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:#111;}
+.reason-body{font-family:'DM Sans',sans-serif;font-size:.88rem;line-height:1.65;color:#555;margin-bottom:.75rem;}
+.reason-fix{font-family:'DM Sans',sans-serif;font-size:.85rem;background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.65rem 1rem;color:#166534;}
+.reason-fix strong{color:#15803d;}
+
+.stat-highlight{background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;text-align:center;color:#fff;}
+.stat-highlight .num{font-size:3rem;font-weight:900;line-height:1;margin-bottom:.3rem;}
+.stat-highlight .desc{font-size:.9rem;opacity:.85;font-family:'DM Sans',sans-serif;}
+
+.checklist{display:flex;flex-direction:column;gap:.5rem;margin:1.25rem 0 2rem;font-family:'DM Sans',sans-serif;}
+.check-item{display:flex;align-items:flex-start;gap:.75rem;font-size:.9rem;color:#374151;line-height:1.6;}
+.check-icon{width:22px;height:22px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;font-size:.7rem;}
+
+blockquote{border-left:4px solid #22c55e;padding:.75rem 0 .75rem 1.5rem;margin:2rem 0;font-style:italic;color:#374151;}
+blockquote cite{display:block;font-style:normal;font-size:.8rem;font-family:'DM Sans',sans-serif;color:#9ca3af;margin-top:.5rem;font-weight:600;}
+
+.cta-banner{background:#0f172a;border-radius:20px;padding:2.5rem 2rem;text-align:center;margin:3rem 0;}
+.cta-banner h3{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.5rem;}
+.cta-banner p{font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem;font-family:'DM Sans',sans-serif;}
+.cta-banner button{background:#22c55e;color:#fff;border:none;border-radius:12px;padding:1rem 2.5rem;font-size:.95rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:0 4px 16px rgba(34,197,94,.35);}
+.cta-banner .sub{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.75rem;font-family:'DM Sans',sans-serif;}
+
+.more-posts{background:#fafafa;border-top:1px solid #f0f0f0;padding:4rem 1.5rem;}
+.more-posts-inner{max-width:760px;margin:0 auto;}
+.more-posts h2{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:800;color:#111;margin-bottom:1.5rem;}
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.post-card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:1.25rem;text-decoration:none;transition:box-shadow .2s,transform .2s;}
+.post-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px);}
+.post-card-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#16a34a;margin-bottom:.5rem;}
+.post-card h3{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;color:#111;line-height:1.4;margin-bottom:.4rem;}
+.post-card p{font-size:.78rem;color:#9ca3af;line-height:1.5;}
+
+footer{background:#fff;border-top:1px solid #f0f0f0;padding:2rem 1.5rem;text-align:center;}
+footer p{font-size:.78rem;color:#9ca3af;}
+footer a{color:#16a34a;text-decoration:none;font-weight:600;}
+
+@media(max-width:600px){
+  .cover-stat-row{flex-direction:column;align-items:center;}
+  .posts-grid{grid-template-columns:1fr;}
+  .blog-hero h1{font-size:1.75rem;}
+  nav{padding:.75rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="blog.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to blog
+  </a>
+  <a href="index.html" style="text-decoration:none;">
+    <div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;">
+      <div style="background:#16a34a;padding:8px 14px;display:flex;align-items:center;gap:7px;">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#fff;">Review</span>
+      </div>
+      <div style="background:#fff;padding:8px 14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#0f172a;">Boost</span>
+        <div style="background:#16a34a;color:#fff;font-family:'DM Sans',sans-serif;font-size:7px;font-weight:900;letter-spacing:.1em;padding:2px 6px;border-radius:4px;">PRO</div>
+      </div>
+    </div>
+  </a>
+  <button class="nav-cta" onclick="window.location.href='index.html'">Free trial →</button>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-tag">🚨 Common Clinic Problem</div>
+  <h1>Why Your Clinic Doesn't Show Up on Google Maps — <em>And How to Fix It</em></h1>
+  <div class="blog-meta">
+    <div class="author-chip">
+      <div class="author-avatar">RB</div>
+      <span>ReviewBoost Team</span>
+    </div>
+    <div class="blog-meta-dot"></div>
+    <span>April 2026</span>
+    <div class="blog-meta-dot"></div>
+    <span>8 min read</span>
+  </div>
+</div>
+
+<!-- COVER STATS -->
+<div class="blog-cover">
+  <div class="cover-card">
+    <p style="font-family:'DM Sans',sans-serif;font-size:.82rem;color:#6b7280;margin-bottom:1.5rem;font-weight:600;">THE COST OF NOT SHOWING UP ON GOOGLE MAPS</p>
+    <div class="cover-stat-row">
+      <div class="cover-stat">
+        <div class="cover-stat-num">70%</div>
+        <div class="cover-stat-label">of patient calls go to<br>the top 3 results only</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">80%</div>
+        <div class="cover-stat-label">of patients search Google<br>before choosing a doctor</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">0</div>
+        <div class="cover-stat-label">Patient calls if you're<br>not on Maps at all</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+  <div class="article-body">
+
+    <p>You've been running your clinic for years. Your patients love you. Word of mouth is good. But when someone types "dermatologist near me" or "dental clinic in [your area]" — your clinic doesn't appear.</p>
+
+    <p>Meanwhile, a clinic that opened 6 months ago is showing up in the top 3. They're getting patient calls you should be getting. And you have no idea why.</p>
+
+    <p><strong>This is one of the most common problems doctors in India face</strong> — and it's almost always fixable. Here are the exact reasons your clinic isn't showing on Google Maps and what to do about each one.</p>
+
+    <h2>First, Understand How Google Maps Works</h2>
+
+    <p>Google Maps shows a "Local Pack" — the top 3 clinics for any search. Getting into this top 3 is the goal. Google decides who appears based on 3 factors:</p>
+
+    <div class="fix-list">
+      <div class="fix-card good">
+        <div class="fix-icon good">📍</div>
+        <div class="fix-content"><strong>Relevance</strong> — How well does your Google Business Profile match what the patient is searching for? (Category, services, description)</div>
+      </div>
+      <div class="fix-card good">
+        <div class="fix-icon good">📏</div>
+        <div class="fix-content"><strong>Distance</strong> — How close is your clinic to the person searching? You can't change your location, but you can make sure Google has it right.</div>
+      </div>
+      <div class="fix-card good">
+        <div class="fix-icon good">⭐</div>
+        <div class="fix-content"><strong>Prominence</strong> — How well known and trusted is your clinic online? Reviews, review count, website authority, and citations all count here.</div>
+      </div>
+    </div>
+
+    <p>Most clinics fail on <strong>relevance</strong> and <strong>prominence</strong>. Distance you can't control. The other two you absolutely can.</p>
+
+    <div class="stat-highlight">
+      <div class="num">70%</div>
+      <div class="desc">of all patient calls go to clinics in the top 3 Google Maps results — everyone else is practically invisible</div>
+    </div>
+
+    <h2>The 8 Reasons Your Clinic Isn't Showing Up</h2>
+
+    <div class="reason-cards">
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">1</div>
+          <div class="reason-title">Your Google Business Profile is not verified</div>
+        </div>
+        <div class="reason-body">This is the most common reason. Google auto-generates listings for many businesses, but until you claim and verify it, Google doesn't trust your listing enough to show it prominently. Unverified profiles rarely appear in Maps searches.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Go to business.google.com → search your clinic name → click "Claim this business" → complete verification via postcard or phone call. Takes 5 minutes to start, up to 5 days to receive the verification code.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">2</div>
+          <div class="reason-title">You chose the wrong business category</div>
+        </div>
+        <div class="reason-body">Your primary category is the single biggest ranking signal on Google Maps. If you're a skin clinic listed under "Medical Clinic" instead of "Dermatologist", you won't show up when patients search "skin doctor near me". This is a silent killer for Maps rankings.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Edit your profile → Business category → Choose the most specific category possible. Examples: "Dermatologist" not "Doctor", "Orthodontist" not "Dentist", "Paediatrician" not "Hospital". Add 2-3 secondary categories too.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">3</div>
+          <div class="reason-title">Your profile is incomplete</div>
+        </div>
+        <div class="reason-body">Google rewards complete profiles. If your clinic is missing its website, hours, services, photos, or description — Google has less information to match you with patient searches. An incomplete profile signals a less credible, less established business.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Fill every single field — business name, address, phone, website, hours, services list (be specific: "Root Canal", "Teeth Whitening" not just "Dental Services"), clinic description, and add at least 10 photos.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">4</div>
+          <div class="reason-title">You have very few or no Google reviews</div>
+        </div>
+        <div class="reason-body">Reviews are the biggest "prominence" signal. A clinic with 50 reviews and a 4.5 rating will consistently outrank a clinic with 5 reviews and a 5.0 rating. Google sees more reviews as evidence that more patients trust you. No reviews = no trust = no ranking.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Start collecting reviews systematically. Send a WhatsApp message to every patient after their visit with a direct link to your Google review page. Even 5 new reviews per month compounds dramatically over 6 months.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">5</div>
+          <div class="reason-title">Your reviews are old — no recent activity</div>
+        </div>
+        <div class="reason-body">A clinic with 200 old reviews and nothing in the last 6 months will lose to a clinic with 30 reviews but 5 new ones this month. Google treats review recency as a trust signal. If patients aren't reviewing you recently, your ranking slowly drops.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Don't treat reviews as a one-time campaign. Build it into your weekly routine — send review requests every Friday to that week's patients. Aim for at least 4-5 new reviews every month, consistently.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">6</div>
+          <div class="reason-title">Inconsistent name, address, or phone number (NAP)</div>
+        </div>
+        <div class="reason-body">If your clinic's name, address, or phone number appears differently across Google, Practo, JustDial, Lybrate, and your website — Google gets confused. This inconsistency hurts your ranking because Google can't confirm your business is legitimate.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Make sure your clinic name, address, and phone number are <em>exactly identical</em> everywhere — Google Business Profile, your website, Practo, JustDial, Lybrate, and any other directory listing.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">7</div>
+          <div class="reason-title">No photos — or only stock photos</div>
+        </div>
+        <div class="reason-body">Profiles with photos get significantly more clicks and direction requests than those without. Stock photos or generic images actually hurt trust — patients want to see your real clinic, real reception area, and real doctors before deciding to visit.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Add real photos — exterior of your clinic, reception area, doctor's cabin, waiting area, equipment. Use a good phone camera in natural light. Add at least 10 photos. Update them every few months to show an active profile.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-num">8</div>
+          <div class="reason-title">You never post on your Google Business Profile</div>
+        </div>
+        <div class="reason-body">Google rewards active profiles. Clinics that post updates — health tips, new services, doctor introductions, seasonal alerts — signal to Google that they are active and engaged. Inactive profiles slowly lose ground to competitors who post regularly.</div>
+        <div class="reason-fix">✅ <strong>Fix:</strong> Post once a week on your Google Business Profile. It takes 5 minutes. Ideas: monsoon health tips, new treatment available, doctor introduction, health awareness day (World Diabetes Day, etc.), patient advice posts.</div>
+      </div>
+
+    </div>
+
+    <h2>The Fastest Way to Climb Google Maps Rankings</h2>
+
+    <p>If you only do one thing from this article, make it this: <strong>start collecting Google reviews consistently.</strong></p>
+
+    <p>Reviews impact both prominence (how trusted you are) and relevance (the keywords patients use in their reviews help Google understand what you offer). A steady flow of recent reviews is the single fastest way to climb Maps rankings.</p>
+
+    <blockquote>
+      "We went from not appearing at all to showing in the top 3 for 'dental clinic Koramangala' within 3 months — just by fixing our profile and collecting reviews consistently via WhatsApp."
+      <cite>— Dr. Ananya Krishnan, Smile Studio Dental, Bangalore</cite>
+    </blockquote>
+
+    <div class="callout callout-blue">
+      <span class="callout-title">📊 How Reviews Affect Your Maps Ranking</span>
+      <strong>Review count:</strong> More reviews = more established business in Google's eyes<br>
+      <strong>Review recency:</strong> Fresh reviews matter more than old ones<br>
+      <strong>Review keywords:</strong> When patients mention "root canal" or "skin treatment", it helps Google match you to those searches<br>
+      <strong>Your responses:</strong> Replying to reviews signals an active, engaged clinic
+    </div>
+
+    <h2>Your 30-Day Google Maps Fix Plan</h2>
+
+    <p>Here's exactly what to do, in order, to start appearing on Google Maps within 30 days:</p>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 1, Day 1:</strong> Claim and verify your Google Business Profile at business.google.com</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 1, Day 2:</strong> Set the correct primary category and add 2-3 secondary categories</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 1, Day 3:</strong> Fill every field — hours, services, description, website, phone</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 1, Day 4:</strong> Upload 10+ real photos of your clinic</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 1, Day 5:</strong> Check NAP consistency on Practo, JustDial, Lybrate, your website</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 2:</strong> Start sending WhatsApp review requests to every patient after their visit</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Week 2 onwards:</strong> Post one update per week on your Google Business Profile</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Every Friday:</strong> Send review requests to all patients seen that week</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Within 24 hours:</strong> Reply to every Google review — positive and negative</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">✓</div>
+        <div><strong>Month 1 end:</strong> Check your Maps ranking for your main keywords — you should see movement</div>
+      </div>
+    </div>
+
+    <div class="callout callout-green">
+      <span class="callout-title">⏱️ When Will You See Results?</span>
+      <strong>Week 1–2:</strong> Profile looks complete and professional — more clicks when you do appear<br>
+      <strong>Month 1:</strong> First ranking improvements for less competitive searches<br>
+      <strong>Month 2–3:</strong> Appearing for main keywords like "clinic near me" in your area<br>
+      <strong>Month 4–6:</strong> Consistently in top 3 for your specialty in your neighbourhood
+    </div>
+
+    <h2>One Thing That Speeds Everything Up</h2>
+
+    <p>Of all the ranking factors, <strong>reviews are the one you can influence fastest.</strong> You can't change your location. Building website authority takes months. But you can get 5 new reviews this week just by sending WhatsApp messages to patients who visited recently.</p>
+
+    <p>The clinics that climb Google Maps fastest are the ones that build review collection into their daily routine — not as a one-time push, but as a consistent system that runs every week.</p>
+
+    <div class="callout callout-orange">
+      <span class="callout-title">⚠️ Common Mistakes to Avoid</span>
+      <strong>Don't</strong> add keywords to your business name ("Best Dentist Pune — Dr. Name") — Google will suspend your profile<br>
+      <strong>Don't</strong> use a PO Box or virtual office address — Google requires a real physical location<br>
+      <strong>Don't</strong> create duplicate listings — one location, one listing<br>
+      <strong>Don't</strong> buy fake reviews — Google detects them and can permanently remove your listing<br>
+      <strong>Don't</strong> ignore reviews — unanswered reviews signal a disengaged clinic
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <h3>Start Getting Google Reviews Today</h3>
+      <p>ReviewBoostPRO makes it easy — send WhatsApp review requests in 2 seconds, route unhappy patients to private feedback, and watch your Maps ranking climb.</p>
+      <button onclick="window.location.href='index.html'">Start free 14-day trial →</button>
+      <div class="sub">No credit card required · ₹499/month · Setup in 5 minutes</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MORE POSTS -->
+<div class="more-posts">
+  <div class="more-posts-inner">
+    <h2>More from the blog</h2>
+    <div class="posts-grid">
+      <a href="blog-whatsapp-google-reviews-clinic-india.html" class="post-card">
+        <div class="post-card-tag">🏥 Clinics & Doctors</div>
+        <h3>How to Get Google Reviews via WhatsApp for Your Clinic in India</h3>
+        <p>3 WhatsApp templates, timing guide, and the smart routing system.</p>
+      </a>
+      <a href="blog-how-to-get-google-reviews.html" class="post-card">
+        <div class="post-card-tag">⭐ Google Reviews</div>
+        <h3>How Indian Businesses Get 3× More Google Reviews Using WhatsApp</h3>
+        <p>The proven system any local Indian business can set up in 10 minutes.</p>
+      </a>
+      <a href="blog.html" class="post-card">
+        <div class="post-card-tag">📚 All Posts</div>
+        <h3>Browse All Blog Posts</h3>
+        <p>Tips, guides, and strategies for Indian businesses and clinics to grow on Google.</p>
+      </a>
+      <a href="index.html" class="post-card">
+        <div class="post-card-tag">🚀 ReviewBoostPRO</div>
+        <h3>Start Getting More Reviews Today — Free 14-Day Trial</h3>
+        <p>No credit card required. Setup in 5 minutes. ₹499/month after trial.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="index.html">ReviewBoostPRO</a> · Made in India 🇮🇳 · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+
+</body>
+</html>
