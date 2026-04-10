@@ -26,12 +26,6 @@ html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:#ffffff;color:#0a0a0a;overflow-x:hidden;}
 #screen-landing{display:none;}
 #screen-auth,#screen-dashboard,#screen-funnel,#screen-feedback,#screen-thanks,#screen-customer-funnel{display:none;position:fixed;inset:0;z-index:2000;}
-#screen-auth.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
-#screen-funnel.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
-#screen-feedback.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
-#screen-thanks.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
-#screen-customer-funnel.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
-#screen-dashboard.active{display:flex;overflow:hidden;background:#f5f7fa;}
 
 /* ── CSS VARIABLES ── */
 :root {
@@ -372,7 +366,7 @@ footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-conte
 <body>
 <div id="app-loader" style="position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;"><div style="width:32px;height:32px;border:3px solid #e0e0e0;border-top-color:#25D366;border-radius:50%;animation:spin .7s linear infinite;"></div></div>
 <style>@keyframes spin{to{transform:rotate(360deg);}}</style>
-<div id="screen-landing" style="display:block">
+<div id="screen-landing" style="display:none">
 <!-- NAV -->
 <nav id="main-nav-new">
   <div class="nav-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:10px 16px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div>
@@ -810,10 +804,10 @@ footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-conte
 
 <script>
 // Scroll reveal
-var fadeObs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 },{threshold:.1});
-document.querySelectorAll('.fade-up').forEach(function(el){fadeObs.observe(el);});
+document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
 
 // Nav scroll
 window.addEventListener('scroll',function(){
@@ -1653,33 +1647,30 @@ document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(c
 
 // ═══ SCREENS ═══
 function showScreen(id) {
-  var allOverlays = ['screen-auth','screen-dashboard','screen-payment','screen-funnel','screen-feedback','screen-thanks','screen-customer-funnel'];
-  
-  if(id === 'screen-landing') {
-    // Hide all overlays, show landing (which is always in DOM)
-    allOverlays.forEach(function(sid){
-      var el=document.getElementById(sid);
-      if(el){el.style.display='none';el.classList.remove('active');}
-    });
-    var landing=document.getElementById('screen-landing');
-    if(landing) landing.style.display='block';
-  } else {
-    // Hide landing, show target overlay
-    var landing=document.getElementById('screen-landing');
-    if(landing) landing.style.display='none';
-    allOverlays.forEach(function(sid){
-      var el=document.getElementById(sid);
-      if(el){el.style.display='none';el.classList.remove('active');}
-    });
-    var target=document.getElementById(id);
-    if(target){
-      target.style.display = (id==='screen-dashboard') ? 'flex' : 'flex';
-      target.classList.add('active');
+  // Hide overlays
+  var overlays = ['screen-auth','screen-dashboard','screen-funnel','screen-feedback','screen-thanks','screen-customer-funnel'];
+  overlays.forEach(function(sid){
+    var el = document.getElementById(sid);
+    if(el) el.style.display = 'none';
+  });
+  // Hide/show landing
+  var landing = document.getElementById('screen-landing');
+  if(landing) landing.style.display = (id === 'screen-landing') ? 'block' : 'none';
+  // Show target overlay
+  if(id !== 'screen-landing') {
+    var t = document.getElementById(id);
+    if(!t) return;
+    if(id === 'screen-dashboard') {
+      t.style.cssText = 'display:flex;position:fixed;inset:0;z-index:2000;overflow:hidden;background:#f5f7fa;';
+    } else {
+      t.style.cssText = 'display:flex;position:fixed;inset:0;z-index:2000;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;';
     }
+    window.scrollTo(0,0);
   }
-  window.scrollTo(0,0);
+  // Hide loader once a screen is shown
+  var loader = document.getElementById('app-loader');
+  if(loader) loader.style.display = 'none';
 }
-
 function showLanding(){
   showScreen('screen-landing');
   // Re-observe fade-up elements that may have been hidden
