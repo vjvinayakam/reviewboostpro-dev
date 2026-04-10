@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EG69HH90M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7EG69HH90M');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate Your Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&family=Space+Grotesk:wght@700&family=DM+Sans:wght@800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+<title>Get More Google Reviews via WhatsApp | ReviewBoostPRO India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Most Indian businesses have less than 10 Google reviews. ReviewBoostPRO helps you get more Google reviews via WhatsApp in 2 seconds — no API needed. Free 14-day trial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#ffffff;color:#0a0a0a;overflow-x:hidden;}
+#screen-landing{display:none;}
+#screen-auth,#screen-dashboard,#screen-funnel,#screen-feedback,#screen-thanks,#screen-customer-funnel{display:none;position:fixed;inset:0;z-index:2000;}
+#screen-auth.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
+#screen-funnel.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
+#screen-feedback.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
+#screen-thanks.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
+#screen-customer-funnel.active{display:flex;overflow-y:auto;align-items:center;justify-content:center;background:#0d1117;}
+#screen-dashboard.active{display:flex;overflow:hidden;background:#f5f7fa;}
+
+/* ── CSS VARIABLES ── */
+:root {
+  --dark:#0d1117; --bg1:#0d1117; --bg2:#161b22; --bg3:#1c2128;
+  --white:#f0f6fc; --mid:rgba(240,246,252,.5); --dim:rgba(240,246,252,.25);
+  --border:rgba(255,255,255,.07); --border2:rgba(34,197,94,.25);
+  --green:#25D366; --green-l:#4ade80; --green-d:#16a34a;
+  --blue:#3b82f6; --amber:#f59e0b; --red:#ef4444;
+  --dash-text:#e2e8f0; --dash-mid:#94a3b8; --dash-dim:#475569;
+}
+
+/* ── AUTH SCREEN ── */
+.auth-grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(34,197,94,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.auth-glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(34,197,94,.08),transparent 70%);pointer-events:none;z-index:0;}
+.auth-back{position:fixed;top:1.25rem;left:1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.5rem 1rem;color:rgba(255,255,255,.6);font-size:.82rem;font-weight:500;cursor:pointer;z-index:10;transition:background .2s;}
+.auth-back:hover{background:rgba(255,255,255,.12);}
+.auth-card{background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;width:100%;max-width:400px;position:relative;z-index:1;margin:5rem 1rem 2rem;}
+.auth-logo{font-size:1.1rem;font-weight:800;margin-bottom:1.25rem;text-align:center;}
+.auth-tabs{display:flex;background:rgba(255,255,255,.04);border-radius:10px;padding:3px;margin-bottom:1.5rem;gap:3px;}
+.auth-tab{flex:1;padding:.55rem;border:none;border-radius:8px;font-size:.83rem;font-weight:600;cursor:pointer;background:transparent;color:rgba(255,255,255,.4);transition:all .2s;}
+.auth-tab.active{background:#25D366;color:#fff;}
+.auth-form{display:flex;flex-direction:column;gap:.85rem;}
+.form-group{display:flex;flex-direction:column;gap:.3rem;position:relative;}
+.form-group label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);}
+.form-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.7rem .9rem;font-size:.88rem;color:#f0f6fc;width:100%;font-family:'Inter',sans-serif;transition:border .2s;outline:none;}
+.form-input:focus{border-color:rgba(37,211,102,.5);}
+.form-input::placeholder{color:rgba(255,255,255,.2);}
+.form-group.has-error .form-input{border-color:#ef4444;}
+.field-error{font-size:.72rem;color:#ef4444;display:none;}
+.form-group.has-error .field-error{display:block;}
+.btn-auth{padding:.85rem;background:#25D366;border:none;border-radius:10px;font-size:.9rem;font-weight:700;color:#fff;cursor:pointer;transition:background .2s;margin-top:.25rem;}
+.btn-auth:hover{background:#1ebe5d;}
+.auth-note{font-size:.72rem;color:rgba(255,255,255,.3);text-align:center;line-height:1.6;}
+.auth-note a{color:rgba(255,255,255,.5);}
+.auth-error-banner{display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:.6rem .9rem;font-size:.8rem;color:#f87171;margin-bottom:.5rem;}
+
+/* ── FUNNEL SCREEN ── */
+.funnel-card{background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;width:100%;max-width:480px;position:relative;z-index:1;}
+.funnel-h{font-size:1.5rem;font-weight:800;color:#f0f6fc;margin-bottom:.4rem;}
+.funnel-sub{font-size:.88rem;color:rgba(240,246,252,.5);margin-bottom:1.5rem;line-height:1.6;}
+.star-row{display:flex;gap:.5rem;justify-content:center;margin-bottom:1rem;}
+.star-btn{font-size:2rem;background:none;border:none;cursor:pointer;transition:transform .15s;padding:.2rem;line-height:1;}
+.star-btn:hover{transform:scale(1.2);}
+.star-label{font-size:.88rem;color:rgba(240,246,252,.6);text-align:center;margin-bottom:.5rem;min-height:1.4em;}
+.btn-funnel{width:100%;padding:.9rem;background:#25D366;border:none;border-radius:10px;font-size:.9rem;font-weight:700;color:#fff;cursor:pointer;transition:background .2s;}
+.btn-funnel:hover{background:#1ebe5d;}
+.btn-funnel.disabled{background:rgba(255,255,255,.08);color:rgba(255,255,255,.3);cursor:default;}
+.sec-tag{display:inline-block;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:100px;padding:.25rem .9rem;font-size:.72rem;font-weight:700;color:#4ade80;letter-spacing:.06em;margin-bottom:.75rem;}
+.sec-h{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:#f0f6fc;line-height:1.15;margin-bottom:.5rem;}
+.sec-h .g{color:#25D366;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:none;}
+.section{max-width:960px;margin:0 auto;padding:4rem 2rem;}
+@media(max-width:768px){.section{padding:3rem 1.25rem;}}
+
+/* ── FEEDBACK SCREEN ── */
+.feedback-card{background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;width:100%;max-width:480px;position:relative;z-index:1;margin:5rem 1rem 2rem;}
+.feedback-icon{font-size:2.5rem;margin-bottom:.75rem;}
+.feedback-h{font-size:1.3rem;font-weight:800;color:#f0f6fc;margin-bottom:.3rem;}
+.feedback-sub{font-size:.85rem;color:rgba(240,246,252,.5);margin-bottom:1.25rem;line-height:1.6;}
+.feedback-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;}
+.tag-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.4rem .9rem;font-size:.78rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;}
+.tag-btn.active,.tag-btn:hover{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.3);color:#4ade80;}
+.textarea-field{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.75rem;font-size:.85rem;color:#f0f6fc;resize:vertical;font-family:'Inter',sans-serif;outline:none;}
+.textarea-field:focus{border-color:rgba(34,197,94,.4);}
+
+/* ── DASHBOARD ── */
+.sidebar{width:240px;flex-shrink:0;background:#fff;border-right:1px solid #e8ecf0;display:flex;flex-direction:column;padding:1.25rem 0;height:100vh;overflow-y:auto;}
+.sb-logo{padding:.75rem 1.25rem 1.25rem;font-size:1rem;font-weight:800;}
+.sb-section{padding:.25rem 1.25rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#aab0ba;margin-top:.75rem;}
+.sb-item{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.25rem;font-size:.83rem;font-weight:500;color:#6b7280;cursor:pointer;transition:all .2s;position:relative;border-radius:0;}
+.sb-item:hover{background:#f5f7fa;color:#0a0a0a;}
+.sb-item.active{background:#f0fdf4;color:#15803d;font-weight:600;border-right:3px solid #25D366;}
+.sb-icon{font-size:.95rem;}
+.sb-bottom{margin-top:auto;padding:1rem 1.25rem;border-top:1px solid #f0f0f0;}
+.notif-dot{width:7px;height:7px;border-radius:50%;background:#ef4444;margin-left:auto;}
+.main-area{flex:1;overflow-y:auto;background:#f5f7fa;display:flex;flex-direction:column;}
+.dash-main{flex:1;overflow-y:auto;background:#f5f7fa;display:flex;flex-direction:column;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+.stat-card{background:#fff;border:1px solid #e8ecf0;border-radius:14px;padding:1.25rem 1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.stat-label{font-size:.7rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem;}
+.stat-value{font-size:2.2rem;font-weight:900;color:#0a0a0a;line-height:1;margin-bottom:.3rem;}
+.stat-change{font-size:.72rem;color:#9ca3af;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.dash-header-right{display:flex;gap:.6rem;align-items:center;flex-shrink:0;}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:100px;padding:.5rem 0 0;}
+.bar-col{flex:1;background:linear-gradient(180deg,#25D366,#4ade80);border-radius:4px 4px 0 0;min-height:4px;transition:height .4s ease;}
+.bar-labels{display:flex;gap:6px;margin-top:.4rem;}
+.bar-lbl{flex:1;font-size:.62rem;color:#9ca3af;text-align:center;}
+@media(max-width:900px){.stats-grid{grid-template-columns:1fr 1fr;}.grid-2{grid-template-columns:1fr;}}
+@media(max-width:420px){.stat-value{font-size:1.7rem;}.stat-card{padding:.9rem 1rem;}}
+.dash-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid #e8ecf0;background:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.dash-title{font-size:1.15rem;font-weight:800;color:#0a0a0a;}
+.dash-subtitle{font-size:.78rem;color:#9ca3af;margin-top:.15rem;}
+.dash-content{padding:1.5rem 2rem;flex:1;}
+.panel{display:none;}.panel.active{display:block;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+.kpi{background:#fff;border:1px solid #e8ecf0;border-radius:14px;padding:1.25rem;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.kpi-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#9ca3af;margin-bottom:.4rem;}
+.kpi-val{font-size:1.8rem;font-weight:900;color:#0a0a0a;line-height:1;}
+.kpi-sub{font-size:.72rem;color:#9ca3af;margin-top:.3rem;}
+.card{background:#fff;border:1px solid #e8ecf0;border-radius:14px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.card-title{font-size:.88rem;font-weight:700;color:#0a0a0a;}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+th{text-align:left;padding:.6rem .75rem;color:#9ca3af;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #f0f0f0;}
+td{padding:.7rem .75rem;color:#374151;border-bottom:1px solid #f9f9f9;}
+.btn-sm{padding:.35rem .8rem;border-radius:7px;font-size:.75rem;font-weight:600;cursor:pointer;background:#f5f7fa;border:1px solid #e8ecf0;color:#374151;}
+.btn-sm:hover{background:#e8ecf0;}
+.btn-green{background:#f0fdf4;border-color:#d1fae5;color:#15803d;}
+.toggle{width:36px;height:20px;background:#e8ecf0;border-radius:100px;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0;}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+.toggle.on{background:#25D366;}.toggle.on::after{left:18px;}
+.settings-row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-bottom:1px solid #f5f5f5;}
+.settings-key{font-size:.85rem;font-weight:600;color:#0a0a0a;}
+.settings-val{font-size:.75rem;color:#9ca3af;margin-top:.15rem;}
+.input-field{background:#f9fafb;border:1px solid #e8ecf0;border-radius:8px;padding:.6rem .8rem;font-size:.85rem;color:#0a0a0a;width:100%;font-family:'Inter',sans-serif;outline:none;}
+.input-field:focus{border-color:#25D366;background:#fff;}
+.form-group-inline{display:flex;flex-direction:column;gap:.3rem;flex:1;}
+.form-group-inline label{font-size:.75rem;color:#6b7280;font-weight:500;}
+.toast{position:fixed;bottom:2rem;right:2rem;background:#0a0a0a;border-radius:12px;padding:.85rem 1.25rem;font-size:.85rem;color:#fff;z-index:9999;transform:translateY(100px);opacity:0;transition:all .3s;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.toast.show{transform:translateY(0);opacity:1;}
+@media(max-width:768px){
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  .dash-content{padding:.875rem;}
+  .dash-header{padding:.875rem 1rem;flex-wrap:nowrap;}
+  .dash-header .dash-subtitle{display:none;}
+  /* Hide sidebar on mobile - use bottom nav instead */
+  .sidebar{display:none!important;}
+  .main-area{width:100%;}
+  #screen-dashboard.active{padding-bottom:64px;}
+  /* Bottom nav bar */
+  .dash-bottom-nav{display:flex!important;}
+}
+@media(min-width:769px){
+  .dash-bottom-nav{display:none!important;}
+}
+.dash-bottom-nav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:3000;
+  background:#fff;border-top:1px solid #e8ecf0;
+  flex-direction:row;align-items:center;justify-content:space-around;
+  height:64px;padding:0 .5rem;
+}
+.dash-bn-item{
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;
+  padding:.4rem .6rem;border:none;background:none;cursor:pointer;
+  font-size:.6rem;font-weight:600;color:#9ca3af;min-width:48px;
+}
+.dash-bn-item.active{color:#25D366;}
+.dash-bn-item .bn-icon{font-size:1.3rem;line-height:1;}
+.badge{display:inline-block;padding:.2rem .6rem;border-radius:100px;font-size:.68rem;font-weight:700;}
+.badge.sent{background:#f0f0f0;color:#6b7280;}
+.badge.opened{background:#eff6ff;color:#1d4ed8;}
+.badge.reviewed{background:#f0fdf4;color:#15803d;}
+.badge.feedback{background:#fff7ed;color:#c2410c;}
+/* Dashboard var overrides for white theme */
+#screen-dashboard .card-title{color:#0a0a0a;}
+#screen-dashboard [style*="color:#374151"]{color:#374151!important;}
+#screen-dashboard [style*="color:#6b7280"]{color:#6b7280!important;}
+#screen-dashboard [style*="color:#9ca3af"]{color:#9ca3af!important;}
+#screen-dashboard [style*="color:#15803d"]{color:#15803d!important;}
+#screen-dashboard [style*="background:rgba(0,0,0,.06)"]{background:#f0f0f0!important;}
+#screen-dashboard [style*="color:#ef4444"]{color:#ef4444!important;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;}
+.nav-logo{display:flex;align-items:center;}
+.logo-mark{width:26px;height:26px;background:#25D366;border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.875rem;color:#555;font-weight:500;}
+.nav-links a:hover{color:#0a0a0a;}
+.btn-signin{padding:.5rem 1rem;background:none;border:1.5px solid #e0e0e0;border-radius:8px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;}
+.btn-signin:hover{border-color:#aaa;color:#0a0a0a;}
+.btn-cta-nav{padding:.55rem 1.2rem;background:#25D366;border:none;border-radius:8px;font-size:.85rem;font-weight:700;color:#fff;cursor:pointer;}
+.btn-cta-nav:hover{background:#1ebe5d;}
+
+/* ── HERO ── */
+.hero{padding:9rem 2rem 5rem;text-align:center;background:#ffffff;position:relative;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:100px;padding:.35rem 1rem;font-size:.78rem;font-weight:600;color:#15803d;margin-bottom:1.5rem;}
+.hero-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.5);}}
+.hero h1{font-family:'Inter',sans-serif;font-size:clamp(3.2rem,7vw,6rem);line-height:1.05;letter-spacing:-.03em;font-weight:900;margin-bottom:1.5rem;max-width:900px;margin-left:auto;margin-right:auto;}
+.hero h1 .green{color:#25D366;}
+.hero h1 .muted{color:#999;font-style:italic;}
+.hero-sub{font-size:1.05rem;color:#666;max-width:500px;margin:0 auto 2.5rem;line-height:1.7;font-weight:400;}
+.hero-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;}
+.btn-primary-hero{padding:1rem 2.2rem;background:#25D366;border:none;border-radius:10px;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(37,211,102,.3);}
+.btn-primary-hero:hover{background:#1ebe5d;}
+.btn-secondary-hero{padding:1rem 2rem;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.95rem;color:#555;background:none;cursor:pointer;font-weight:500;}
+.btn-secondary-hero:hover{border-color:#aaa;color:#0a0a0a;}
+.hero-note{font-size:.78rem;color:#aaa;margin-bottom:2.5rem;}
+.trust-badges{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;padding:1.75rem 2rem;background:#fafafa;border:1px solid #f0f0f0;border-radius:14px;max-width:640px;margin:0 auto;}
+.trust-badge{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:500;color:#555;}
+.trust-sep{width:1px;height:20px;background:#e0e0e0;}
+
+/* ── PROBLEM SECTION ── */
+.problem-section{padding:5rem 2rem;background:#fff9f9;border-top:1px solid #fee2e2;}
+.problem-inner{max-width:760px;margin:0 auto;text-align:center;}
+.problem-section h2{font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:.75rem;}
+.problem-section h2 .red{color:#ef4444;}
+.problem-section .sub{font-size:.95rem;color:#888;margin-bottom:2.5rem;}
+.problem-list{display:flex;flex-direction:column;gap:.75rem;text-align:left;}
+.problem-item{display:flex;align-items:center;gap:.85rem;background:#fff;border:1px solid #fee2e2;border-radius:10px;padding:1rem 1.25rem;}
+.problem-icon{width:28px;height:28px;background:#fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.problem-text{font-size:.88rem;color:#333;font-weight:500;}
+
+/* ── 3 STEPS ── */
+.steps-section{padding:6rem 2rem;background:#fff;border-top:1px solid #f0f0f0;}
+.steps-inner{max-width:900px;margin:0 auto;text-align:center;}
+.steps-section h2{font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;margin-bottom:.75rem;}
+.steps-section h2 .green{color:#25D366;}
+.steps-section .sub{font-size:.95rem;color:#888;margin-bottom:3.5rem;}
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;}
+.steps-line{position:absolute;top:40px;left:calc(16.6% + 20px);right:calc(16.6% + 20px);height:2px;background:linear-gradient(90deg,#25D366,#bbf7d0);z-index:0;}
+.step-card{position:relative;z-index:1;}
+.step-circle{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 1.25rem;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+.step-1{background:#25D366;}
+.step-2{background:#128C7E;}
+.step-3{background:#075E54;}
+.step-title{font-size:1rem;font-weight:700;color:#0a0a0a;margin-bottom:.4rem;}
+.step-desc{font-size:.84rem;color:#888;line-height:1.6;}
+
+/* ── FOR BUSINESS ── */
+.biz-section{padding:5rem 2rem;background:#f8fffe;border-top:1px solid #d1fae5;}
+.biz-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.biz-section h2{font-family:'Inter',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:.6rem;}
+.biz-section .sub{font-size:.92rem;color:#888;margin-bottom:2.5rem;}
+.biz-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.biz-card{background:#fff;border:1px solid #d1fae5;border-radius:12px;padding:1.25rem .75rem;text-align:center;transition:transform .2s,box-shadow .2s;}
+.biz-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,211,102,.12);}
+.biz-emoji{font-size:1.75rem;margin-bottom:.5rem;}
+.biz-name{font-size:.78rem;font-weight:600;color:#0a0a0a;}
+.biz-sub{font-size:.68rem;color:#999;margin-top:.15rem;}
+
+/* ── GOOGLE REVIEWS ── */
+.reviews-section{padding:6rem 2rem;background:#fff;border-top:1px solid #f0f0f0;}
+.reviews-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.reviews-section h2{font-family:'Inter',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:.6rem;}
+.reviews-section .sub{font-size:.92rem;color:#888;margin-bottom:3rem;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;text-align:left;}
+.review-card{background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.04);}
+.review-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem;}
+.review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:#fff;flex-shrink:0;}
+.review-name{font-size:.88rem;font-weight:700;color:#0a0a0a;}
+.review-biz{font-size:.72rem;color:#999;margin-top:.1rem;}
+.review-stars{color:#FBBC05;font-size:.9rem;margin-bottom:.6rem;letter-spacing:1px;}
+.review-text{font-size:.82rem;color:#444;line-height:1.7;}
+.google-badge{display:flex;align-items:center;gap:.4rem;margin-top:.85rem;padding-top:.75rem;border-top:1px solid #f5f5f5;}
+.google-badge span{font-size:.7rem;color:#aaa;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;padding:2rem;background:#f8fffe;border-radius:14px;border:1px solid #d1fae5;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Inter',sans-serif;font-size:2.2rem;font-weight:800;color:#25D366;line-height:1;margin-bottom:.25rem;}
+.stat-label{font-size:.78rem;color:#888;}
+
+/* ── PRICING ── */
+.pricing-section{padding:6rem 2rem;background:#fff;border-top:1px solid #f0f0f0;}
+.pricing-inner{max-width:480px;margin:0 auto;text-align:center;}
+.pricing-section h2{font-family:'Inter',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:.6rem;}
+.pricing-section .sub{font-size:.92rem;color:#888;margin-bottom:2.5rem;}
+.pricing-card{border:2px solid #25D366;border-radius:16px;overflow:hidden;text-align:left;}
+.pricing-top{background:#f0fdf4;padding:2rem;text-align:center;border-bottom:1px solid #d1fae5;}
+.trial-badge{display:inline-block;background:#25D366;color:#fff;font-size:.68rem;font-weight:700;padding:.25rem .75rem;border-radius:100px;margin-bottom:.75rem;letter-spacing:.05em;}
+.pricing-amount{font-family:'Inter',sans-serif;font-size:3.5rem;font-weight:900;color:#0a0a0a;line-height:1;}
+.pricing-period{font-size:.88rem;color:#888;}
+.pricing-note{font-size:.78rem;color:#999;margin-top:.4rem;}
+.pricing-body{padding:2rem;background:#fff;}
+.pricing-features{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.75rem;}
+.pricing-feat{display:flex;align-items:center;gap:.65rem;font-size:.875rem;color:#333;}
+.pricing-feat-check{color:#25D366;font-weight:700;font-size:.85rem;flex-shrink:0;}
+.btn-pricing{width:100%;padding:1rem;background:#25D366;border:none;border-radius:10px;font-size:1rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(37,211,102,.3);}
+.btn-pricing:hover{background:#1ebe5d;}
+.pricing-footer{text-align:center;font-size:.78rem;color:#aaa;margin-top:.85rem;}
+
+/* ── FAQ ── */
+.faq-section-new{padding:5rem 2rem;background:#fafafa;border-top:1px solid #f0f0f0;}
+.faq-inner{max-width:680px;margin:0 auto;}
+.faq-section-new h2{font-family:'Inter',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:2.5rem;text-align:center;}
+.faq-item-new{background:#fff;border:1px solid #f0f0f0;border-radius:12px;margin-bottom:.75rem;overflow:hidden;cursor:pointer;}
+.faq-item-new:hover{border-color:#d1fae5;}
+.faq-q-new{padding:1.2rem 1.5rem;font-size:.9rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;color:#0a0a0a;}
+.faq-icon-new{color:#25D366;font-size:1.2rem;transition:transform .3s;flex-shrink:0;}
+.faq-item-new.open .faq-icon-new{transform:rotate(45deg);}
+.faq-a-new{padding:0 1.5rem;font-size:.85rem;color:#666;line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+.faq-item-new.open .faq-a-new{max-height:200px;padding-bottom:1.25rem;}
+
+/* ── CTA BOTTOM ── */
+.cta-bottom{padding:5rem 2rem;text-align:center;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border-top:1px solid #d1fae5;}
+.cta-bottom h2{font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:.75rem;color:#0a0a0a;}
+.cta-bottom p{font-size:.95rem;color:#555;margin-bottom:2rem;}
+.cta-bottom-note{font-size:.78rem;color:#999;margin-top:.75rem;}
+
+/* ── FOOTER ── */
+footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:#fff;}
+.footer-logo{display:flex;align-items:center;}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:.78rem;color:#999;}
+.footer-links a:hover{color:#0a0a0a;}
+.footer-copy{font-size:.75rem;color:#ccc;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:none;}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .problem-grid{grid-template-columns:1fr!important;}
+  nav{padding:.75rem 1rem;}
+  .nav-links{display:none;}
+  .btn-signin{display:none;}
+  .hero{padding:5.5rem 1.25rem 2.5rem;}
+  .hero h1{font-size:clamp(2.4rem,10vw,3.5rem);letter-spacing:-.02em;}
+  .steps-row{grid-template-columns:1fr;}.steps-line{display:none;}
+  .biz-grid{grid-template-columns:repeat(3,1fr);}
+  .reviews-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  footer{padding:1.5rem;flex-direction:column;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
+  .trust-badges{gap:.6rem;}
+  .trust-sep{display:none;}
+  .problem-section,.steps-section,.biz-section,.reviews-section,.pricing-section,.faq-section-new,.cta-bottom{padding:3rem 1.25rem;}
+  .btn-primary-hero,.btn-secondary-hero{width:100%;justify-content:center;}
+  .hero-actions{flex-direction:column;align-items:stretch;padding:0 .5rem;}
+  .trust-badges{flex-direction:row;flex-wrap:wrap;justify-content:center;}
+  .trust-badge{font-size:.75rem;}
+}
+@media(max-width:480px){
+  .biz-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .nav-logo{font-size:1.1rem!important;}
+}
+</style>
+</head>
+<body>
+<div id="app-loader" style="position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;"><div style="width:32px;height:32px;border:3px solid #e0e0e0;border-top-color:#25D366;border-radius:50%;animation:spin .7s linear infinite;"></div></div>
+<style>@keyframes spin{to{transform:rotate(360deg);}}</style>
+<div id="screen-landing" style="display:block">
+<!-- NAV -->
+<nav id="main-nav-new">
+  <div class="nav-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:10px 16px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div>
+  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="scrollToSection('steps');return false;">How it works</a></li>
+    <li><a href="javascript:void(0)" onclick="scrollToSection('pricing-new');return false;">Pricing</a></li>
+    <li><a href="javascript:void(0)" onclick="scrollToSection('faq-new');return false;">FAQ</a></li>
+  </ul>
+  <div style="display:flex;gap:.6rem;align-items:center;">
+    <button class="btn-signin" onclick="showAuth('login')">Sign in</button>
+    <button class="btn-cta-nav" onclick="showAuth('signup')">Free trial →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:7rem 1.5rem 4.5rem;background:#ffffff;text-align:center;">
+
+  <!-- Eyebrow -->
+  <div class="hero-eyebrow fade-up" style="margin-bottom:1.75rem;">
+    <span class="hero-eyebrow-dot"></span>
+    Helping Indian businesses get more Google reviews
+  </div>
+
+  <!-- Headline -->
+  <h1 class="fade-up" style="animation-delay:.05s;font-size:clamp(2.6rem,9vw,5.5rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;color:#0a0a0a;margin-bottom:2rem;max-width:820px;margin-left:auto;margin-right:auto;">
+    Turn every customer<br>into a <span style="color:#22c55e;">5-star</span> <span style="color:#bbb;font-style:italic;">Google review</span>
+  </h1>
+
+  <!-- Flow pills — from uploaded design -->
+  <div class="fade-up" style="animation-delay:.1s;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;">
+    <div style="display:flex;align-items:center;gap:8px;background:#f0faf5;border:1.5px solid #5DCAA5;border-radius:999px;padding:10px 20px;">
+      <span style="font-size:18px;">💬</span>
+      <span style="font-size:15px;font-weight:600;color:#085041;">Send WhatsApp</span>
+    </div>
+    <span style="font-size:20px;color:#d1d5db;">→</span>
+    <div style="display:flex;align-items:center;gap:8px;background:#f0f4ff;border:1.5px solid #AFA9EC;border-radius:999px;padding:10px 20px;">
+      <span style="font-size:18px;">⭐</span>
+      <span style="font-size:15px;font-weight:600;color:#3C3489;">Happy → Google</span>
+    </div>
+    <span style="font-size:20px;color:#d1d5db;">→</span>
+    <div style="display:flex;align-items:center;gap:8px;background:#fff8ee;border:1.5px solid #EF9F27;border-radius:999px;padding:10px 20px;">
+      <span style="font-size:18px;">🔒</span>
+      <span style="font-size:15px;font-weight:600;color:#633806;">Unhappy → Private</span>
+    </div>
+  </div>
+
+  <!-- CTAs — from uploaded design -->
+  <div class="fade-up" style="animation-delay:.15s;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:.75rem;">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <button onclick="showAuth('signup')" style="background:#22c55e;color:#fff;border:none;border-radius:12px;padding:18px 36px;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:10px;letter-spacing:-.3px;box-shadow:0 6px 24px rgba(34,197,94,.35);font-family:'Inter',sans-serif;">
+        <span style="font-size:16px;">✓</span> Start free 14-day trial
+      </button>
+      <button onclick="showFunnel()" style="background:#fff;color:#0a0a0a;border:1.5px solid #e0e0e0;border-radius:12px;padding:18px 28px;font-size:16px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;">
+        See how it works →
+      </button>
+    </div>
+    <p style="font-size:14px;color:#aaa;margin:0;">No credit card required · ₹499/month after trial</p>
+  </div>
+
+  <!-- Trust badges — from uploaded design -->
+  <div class="fade-up" style="animation-delay:.2s;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:2rem;">
+    <div style="background:#fff;border:1px solid #ebebeb;border-radius:14px;padding:14px 22px;display:flex;align-items:center;gap:12px;min-width:150px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:#0a0a0a;">Google Reviews</div>
+        <div style="font-size:16px;color:#f59e0b;letter-spacing:2px;">★★★★★</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #ebebeb;border-radius:14px;padding:14px 22px;display:flex;align-items:center;gap:12px;min-width:150px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4C7.63 4 4 7.63 4 12.05c0 1.42.37 2.8 1.07 4.02L4 20l4.05-1.06a8.02 8.02 0 003.98 1.02h.03c4.42 0 8.05-3.63 8.05-8.05 0-2.15-.84-4.17-2.51-5.59zm-5.55 12.38h-.02a6.66 6.66 0 01-3.39-.93l-.24-.14-2.5.66.67-2.44-.16-.25a6.63 6.63 0 01-1.02-3.54c0-3.67 2.99-6.66 6.67-6.66 1.78 0 3.45.7 4.71 1.96a6.6 6.6 0 011.95 4.72c-.01 3.68-3 6.62-6.67 6.62zm3.66-4.98c-.2-.1-1.18-.58-1.36-.65-.18-.07-.32-.1-.45.1-.13.2-.51.65-.62.78-.11.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.52-.99-1.17-1.1-1.37-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66s.71 1.93.82 2.06c.1.13 1.4 2.14 3.4 3 .47.2.84.33 1.13.42.47.15.9.13 1.24.08.38-.06 1.18-.48 1.34-.95.17-.47.17-.87.12-.95-.05-.09-.18-.14-.38-.24z" fill="#25D366"/></svg>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:#0a0a0a;">WhatsApp</div>
+        <div style="font-size:13px;color:#888;">No API needed</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #ebebeb;border-radius:14px;padding:14px 22px;display:flex;align-items:center;gap:12px;min-width:150px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
+      <span style="font-size:22px;">🇮🇳</span>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:#0a0a0a;">Made for India</div>
+        <div style="font-size:13px;color:#888;">₹499/month</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media(max-width:540px){
+      .hero-actions-wrap{flex-direction:column;align-items:stretch!important;}
+      .hero-actions-wrap button{width:100%;justify-content:center;}
+    }
+  </style>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section style="padding:5rem 1.5rem;background:#fff;border-top:1px solid #f0f0f0;">
+  <div style="max-width:680px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3rem;">
+      <h2 class="fade-up" style="font-family:'Inter',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.15;color:#0a0a0a;margin-bottom:1rem;">
+        <span style="color:#ef4444;">Bad reviews</span> are costing<br>you customers
+      </h2>
+      <p class="fade-up" style="font-size:.95rem;color:#888;max-width:420px;margin:0 auto;line-height:1.7;">Most Indian businesses have no idea how many customers they lose because of low Google ratings.</p>
+    </div>
+
+    <!-- 4 problem cards -->
+    <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.5rem;">
+
+      <div class="fade-up" style="display:flex;align-items:flex-start;gap:1.25rem;background:#fafafa;border-radius:14px;padding:1.25rem 1.5rem;">
+        <div style="font-size:1.5rem;line-height:1;margin-top:.1rem;flex-shrink:0;">😟</div>
+        <div>
+          <div style="font-size:.95rem;font-weight:700;color:#0a0a0a;margin-bottom:.25rem;">Bad reviews instantly kill customer trust</div>
+          <div style="font-size:.82rem;color:#888;line-height:1.65;">88% of customers read reviews before visiting a business. One bad review can drive away 30 potential customers.</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="display:flex;align-items:flex-start;gap:1.25rem;background:#fafafa;border-radius:14px;padding:1.25rem 1.5rem;">
+        <div style="font-size:1.5rem;line-height:1;margin-top:.1rem;flex-shrink:0;">📉</div>
+        <div>
+          <div style="font-size:.95rem;font-weight:700;color:#0a0a0a;margin-bottom:.25rem;">Low ratings push you off Google Maps</div>
+          <div style="font-size:.82rem;color:#888;line-height:1.65;">Competitors with more reviews rank above you. Customers never even find your business.</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="display:flex;align-items:flex-start;gap:1.25rem;background:#fafafa;border-radius:14px;padding:1.25rem 1.5rem;">
+        <div style="font-size:1.5rem;line-height:1;margin-top:.1rem;flex-shrink:0;">🔴</div>
+        <div>
+          <div style="font-size:.95rem;font-weight:700;color:#0a0a0a;margin-bottom:.25rem;">Negative reviews stay public forever</div>
+          <div style="font-size:.82rem;color:#888;line-height:1.65;">Even after you fix the problem, the 1-star review stays on Google damaging your reputation permanently.</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="display:flex;align-items:flex-start;gap:1.25rem;background:#fafafa;border-radius:14px;padding:1.25rem 1.5rem;">
+        <div style="font-size:1.5rem;line-height:1;margin-top:.1rem;flex-shrink:0;">💸</div>
+        <div>
+          <div style="font-size:.95rem;font-weight:700;color:#0a0a0a;margin-bottom:.25rem;">You never get a chance to fix it first</div>
+          <div style="font-size:.82rem;color:#888;line-height:1.65;">Unhappy customers go straight to Google instead of giving you a chance to make it right.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Solution banner -->
+    <div class="fade-up" style="background:#f0fdf4;border:1.5px solid #25D366;border-radius:16px;padding:1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+      <div style="width:44px;height:44px;background:#25D366;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="flex:1;min-width:180px;">
+        <div style="font-size:.95rem;font-weight:700;color:#0a0a0a;margin-bottom:.2rem;">ReviewBoostPRO fixes all of this</div>
+        <div style="font-size:.82rem;color:#555;line-height:1.6;">Unhappy customers give you <strong style="color:#15803d;">private feedback</strong> first. Happy ones go straight to <strong style="color:#15803d;">Google</strong>. Your rating only ever goes up.</div>
+      </div>
+      <button onclick="showAuth('signup')" style="padding:.75rem 1.4rem;background:#25D366;border:none;border-radius:10px;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer;white-space:nowrap;flex-shrink:0;width:100%;">Try it free →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section class="steps-section" id="steps">
+  <div class="steps-inner">
+    <h2 class="fade-up" style="font-family:'Inter',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:3rem;text-align:center;">Get More Reviews in <span style="color:#2563eb;">3 Simple Steps</span></h2>
+
+    <!-- Desktop: horizontal 3-column -->
+    <div class="steps-desktop steps-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;position:relative;max-width:900px;margin:0 auto;">
+      <div style="position:absolute;top:44px;left:calc(16.5% + 22px);right:calc(16.5% + 22px);height:1.5px;background:#e0e0e0;z-index:0;"></div>
+      <div class="step-card fade-up" style="position:relative;z-index:1;text-align:center;">
+        <div style="width:88px;height:88px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#fff;margin:0 auto 1.25rem;box-shadow:0 6px 20px rgba(59,130,246,.3);">1</div>
+        <div style="font-size:1rem;font-weight:700;color:#0a0a0a;margin-bottom:.5rem;">Send on WhatsApp</div>
+        <div style="font-size:.84rem;color:#888;line-height:1.65;">One click opens WhatsApp with your message ready to send.</div>
+      </div>
+      <div class="step-card fade-up" style="position:relative;z-index:1;text-align:center;transition-delay:.1s;">
+        <div style="width:88px;height:88px;border-radius:50%;background:#ef4444;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#fff;margin:0 auto 1.25rem;box-shadow:0 6px 20px rgba(239,68,68,.3);">2</div>
+        <div style="font-size:1rem;font-weight:700;color:#0a0a0a;margin-bottom:.5rem;">Customer Rates</div>
+        <div style="font-size:.84rem;color:#888;line-height:1.65;">They tap your link and pick 1–5 stars. No app needed.</div>
+      </div>
+      <div class="step-card fade-up" style="position:relative;z-index:1;text-align:center;transition-delay:.2s;">
+        <div style="width:88px;height:88px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#fff;margin:0 auto 1.25rem;box-shadow:0 6px 20px rgba(34,197,94,.3);">3</div>
+        <div style="font-size:1rem;font-weight:700;color:#0a0a0a;margin-bottom:.5rem;">Reviews Roll In</div>
+        <div style="font-size:.84rem;color:#888;line-height:1.65;">4–5 stars go to Google. 1–3 stay private. Rating only goes up.</div>
+      </div>
+    </div>
+
+    <!-- Mobile: vertical timeline from uploaded file -->
+    <div class="steps-mobile" style="display:none;flex-direction:column;gap:0;max-width:420px;margin:0 auto;">
+
+      <div class="fade-up" style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;">1</div>
+          <div style="width:2px;height:48px;background:#e5e7eb;margin-top:4px;"></div>
+        </div>
+        <div style="padding-top:10px;padding-bottom:1.5rem;">
+          <div style="font-size:16px;font-weight:700;color:#0a0a0a;margin-bottom:4px;">Send on WhatsApp</div>
+          <div style="font-size:14px;color:#888;line-height:1.5;">One click opens WhatsApp with your message ready to send.</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#ef4444;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;">2</div>
+          <div style="width:2px;height:48px;background:#e5e7eb;margin-top:4px;"></div>
+        </div>
+        <div style="padding-top:10px;padding-bottom:1.5rem;">
+          <div style="font-size:16px;font-weight:700;color:#0a0a0a;margin-bottom:4px;">Customer Rates</div>
+          <div style="font-size:14px;color:#888;line-height:1.5;">They tap your link and pick 1–5 stars. No app needed.</div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;">3</div>
+        </div>
+        <div style="padding-top:10px;">
+          <div style="font-size:16px;font-weight:700;color:#0a0a0a;margin-bottom:4px;">Reviews Roll In</div>
+          <div style="font-size:14px;color:#888;line-height:1.5;">4–5 stars go to Google. 1–3 stay private. Rating only goes up.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @media(max-width:640px){
+      .steps-desktop{display:none!important;}
+      .steps-mobile{display:flex!important;}
+    }
+  </style>
+</section>
+
+<!-- PERFECT FOR BUSINESS -->
+<section style="padding:4rem 1.25rem;background:#f0fdf4;border-top:1px solid #d1fae5;">
+  <div style="max-width:480px;margin:0 auto;">
+    <div class="fade-up" style="text-align:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:clamp(1.5rem,5vw,1.75rem);font-weight:800;color:#111;line-height:1.3;margin-bottom:6px;">Perfect for These <span style="color:#16a34a;">Businesses</span></h2>
+      <p style="font-size:13px;color:#6b7280;font-weight:600;">Any local business that serves customers</p>
+    </div>
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <div class="biz-u-card"><div class="biz-u-icon">🏥</div><div class="biz-u-name">Clinics</div><div class="biz-u-sub">& Hospitals</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🦷</div><div class="biz-u-name">Dental</div><div class="biz-u-sub">Clinics</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">💇</div><div class="biz-u-name">Salons</div><div class="biz-u-sub">& Spas</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🍽️</div><div class="biz-u-name">Restaurants</div><div class="biz-u-sub">& Cafés</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">👗</div><div class="biz-u-name">Boutiques</div><div class="biz-u-sub">& Retail</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">💊</div><div class="biz-u-name">Pharmacies</div><div class="biz-u-sub">& Medical</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🏋️</div><div class="biz-u-name">Gyms</div><div class="biz-u-sub">& Fitness</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🏨</div><div class="biz-u-name">Hotels</div><div class="biz-u-sub">& Homestays</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🔧</div><div class="biz-u-name">Auto</div><div class="biz-u-sub">& Repair</div></div>
+      <div class="biz-u-card"><div class="biz-u-icon">🧘</div><div class="biz-u-name">Yoga</div><div class="biz-u-sub">& Wellness</div></div>
+      <div style="grid-column:span 2;background:#f0fdf4;border:2px dashed #86efac;border-radius:14px;padding:14px;text-align:center;font-size:13px;font-weight:700;color:#16a34a;display:flex;align-items:center;justify-content:center;">+ Many more local businesses</div>
+    </div>
+  </div>
+  <style>
+    .biz-u-card{background:#fff;border:1.5px solid #bbf7d0;border-radius:14px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;transition:transform .2s,box-shadow .2s;}
+    .biz-u-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(22,163,74,.12);}
+    .biz-u-icon{font-size:28px;line-height:1;}
+    .biz-u-name{font-size:13px;font-weight:700;color:#111;}
+    .biz-u-sub{font-size:11px;color:#6b7280;font-weight:600;}
+    @media(min-width:768px){
+      .biz-u-card{border-radius:16px;padding:1.1rem .75rem;}
+    }
+  </style>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section id="reviews" style="padding:5rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;">
+  <style>
+    .reviews-new-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+    @media(max-width:768px){.reviews-new-grid{grid-template-columns:1fr!important;}}
+    .stats-bar-new{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.5rem;background:#fff;border-radius:16px;border:1px solid #e8e8e8;overflow:hidden;}
+    @media(max-width:640px){.stats-bar-new{grid-template-columns:1fr 1fr!important;}}
+    .stat-cell{text-align:center;padding:1.75rem 1rem;}
+    .stat-cell:not(:last-child){border-right:1px solid #f0f0f0;}
+    @media(max-width:640px){.stat-cell:nth-child(2){border-right:none!important;}.stat-cell:nth-child(1),.stat-cell:nth-child(2){border-bottom:1px solid #f0f0f0!important;}}
+  </style>
+  <div style="max-width:960px;margin:0 auto;">
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid #e8e8e8;border-radius:100px;padding:.3rem .9rem;font-size:.75rem;font-weight:600;color:#555;margin-bottom:1rem;">⭐ Customer Stories</div>
+      <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:#0a0a0a;line-height:1.15;margin-bottom:.5rem;">Businesses across India <span style="color:#25D366;">love us</span></h2>
+      <p style="font-size:.92rem;color:#888;">Real results from real business owners</p>
+    </div>
+
+    <!-- Review cards -->
+    <div class="reviews-new-grid">
+
+      <!-- Card 1 -->
+      <div class="fade-up" style="background:#fff;border-radius:16px;padding:1.5rem;border:1px solid #f0f0f0;display:flex;flex-direction:column;gap:1rem;">
+        <div style="color:#FBBC05;font-size:1rem;letter-spacing:2px;">★★★★★</div>
+        <p style="font-size:.88rem;color:#333;line-height:1.75;flex:1;">"We went from 14 Google reviews to 89 in just 2 months. Patients now find us on Google before calling. Absolutely worth every rupee."</p>
+        <div style="display:flex;align-items:center;gap:.75rem;padding-top:1rem;border-top:1px solid #f5f5f5;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4285F4,#1a6fd4);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0;">PS</div>
+          <div style="flex:1;">
+            <div style="font-size:.85rem;font-weight:700;color:#0a0a0a;">Dr. Priya Sharma</div>
+            <div style="font-size:.72rem;color:#999;">SmileCare Dental, Chennai</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" flex-shrink="0"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 2 - Featured -->
+      <div class="fade-up" style="background:#fff;border-radius:16px;padding:1.5rem;border:2px solid #25D366;display:flex;flex-direction:column;gap:1rem;position:relative;transition-delay:.1s;">
+        <div style="position:absolute;top:-12px;left:1.25rem;background:#25D366;color:#fff;font-size:.65rem;font-weight:700;padding:.25rem .75rem;border-radius:100px;letter-spacing:.05em;">⭐ FEATURED</div>
+        <div style="color:#FBBC05;font-size:1rem;letter-spacing:2px;">★★★★★</div>
+        <p style="font-size:.88rem;color:#333;line-height:1.75;flex:1;">"My salon had 8 reviews for 3 years. Within 45 days of using ReviewBoostPRO I have 67 reviews and my booking rate has doubled. The WhatsApp method is genius."</p>
+        <div style="display:flex;align-items:center;gap:.75rem;padding-top:1rem;border-top:1px solid #f5f5f5;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0;">AK</div>
+          <div style="flex:1;">
+            <div style="font-size:.85rem;font-weight:700;color:#0a0a0a;">Ananya Krishnan</div>
+            <div style="font-size:.72rem;color:#999;">Style Studio Salon, Bangalore</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="fade-up" style="background:#fff;border-radius:16px;padding:1.5rem;border:1px solid #f0f0f0;display:flex;flex-direction:column;gap:1rem;transition-delay:.2s;">
+        <div style="color:#FBBC05;font-size:1rem;letter-spacing:2px;">★★★★★</div>
+        <p style="font-size:.88rem;color:#333;line-height:1.75;flex:1;">"Best ₹499 I spend every month. Our restaurant went from 3.9 stars to 4.7 stars in 3 months. Weekend walk-ins have increased noticeably. Highly recommend."</p>
+        <div style="display:flex;align-items:center;gap:.75rem;padding-top:1rem;border-top:1px solid #f5f5f5;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#128C7E,#075E54);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0;">RV</div>
+          <div style="flex:1;">
+            <div style="font-size:.85rem;font-weight:700;color:#0a0a0a;">Rahul Verma</div>
+            <div style="font-size:.72rem;color:#999;">Spice Garden Restaurant, Mumbai</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats grid - from uploaded design -->
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin:2.5rem auto 0;">
+      <div style="background:#fff;border-radius:18px;padding:1.4rem 1.25rem;border:1.5px solid #bbf7d0;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:36px;font-weight:800;color:#16a34a;line-height:1;">4.8★</div>
+        <div style="font-size:13px;font-weight:600;color:#166534;">Avg rating achieved</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:1.4rem 1.25rem;border:1.5px solid #bbf7d0;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:36px;font-weight:800;color:#16a34a;line-height:1;">3×</div>
+        <div style="font-size:13px;font-weight:600;color:#166534;">More reviews in 60 days</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:1.4rem 1.25rem;border:1.5px solid #bbf7d0;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:36px;font-weight:800;color:#16a34a;line-height:1;">68%</div>
+        <div style="font-size:13px;font-weight:600;color:#166534;">WhatsApp open rate</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:1.4rem 1.25rem;border:1.5px solid #bbf7d0;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:36px;font-weight:800;color:#16a34a;line-height:1;">2 sec</div>
+        <div style="font-size:13px;font-weight:600;color:#166534;">To send a request</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing-new">
+  <div class="pricing-inner">
+    <h2 class="fade-up">Simple, <span style="color:#25D366;">Transparent</span> Pricing</h2>
+    <p class="sub fade-up">One plan. Everything included. Cancel anytime.</p>
+    <div class="pricing-card fade-up">
+      <div class="pricing-top">
+        <div class="trial-badge">14-DAY FREE TRIAL</div>
+        <div class="pricing-amount">₹499<span class="pricing-period">/month</span></div>
+        <div class="pricing-note">No credit card required to start</div>
+      </div>
+      <div class="pricing-body">
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Unlimited WhatsApp review requests</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Smart funnel — 4-5★ Google, 1-3★ private</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Private feedback inbox</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Live analytics dashboard</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Custom message templates</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Works with any WhatsApp number</div>
+          <div class="pricing-feat"><span class="pricing-feat-check">✓</span>Email & WhatsApp support</div>
+        </div>
+        <button class="btn-pricing" onclick="showAuth('signup')">Start free 14-day trial →</button>
+        <div class="pricing-footer">No credit card required · Cancel anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section-new" id="faq-new">
+  <div class="faq-inner">
+    <h2 class="fade-up">Frequently Asked <span style="color:#25D366;">Questions</span></h2>
+    <div class="faq-item-new fade-up" onclick="toggleFaqNew(this)">
+      <div class="faq-q-new">Do I need a WhatsApp Business API account?<span class="faq-icon-new">+</span></div>
+      <div class="faq-a-new">No! ReviewBoostPRO uses the standard wa.me link method. You click a button, WhatsApp opens with the message pre-filled, and you hit send from your own phone. No API needed, no approvals, no fees.</div>
+    </div>
+    <div class="faq-item-new fade-up" onclick="toggleFaqNew(this)">
+      <div class="faq-q-new">Is asking for reviews against Google's terms?<span class="faq-icon-new">+</span></div>
+      <div class="faq-a-new">No — asking customers for honest reviews is fully allowed by Google. ReviewBoostPRO simply makes it easy for happy customers to leave one. Used by thousands of businesses globally.</div>
+    </div>
+    <div class="faq-item-new fade-up" onclick="toggleFaqNew(this)">
+      <div class="faq-q-new">How quickly will I see more reviews?<span class="faq-icon-new">+</span></div>
+      <div class="faq-a-new">Most businesses see new Google reviews within 24–48 hours of sending their first requests. On average, a 3–5× increase in reviews within 60 days.</div>
+    </div>
+    <div class="faq-item-new fade-up" onclick="toggleFaqNew(this)">
+      <div class="faq-q-new">Is there a free trial?<span class="faq-icon-new">+</span></div>
+      <div class="faq-a-new">Yes — 14 days free with 10 review requests included. No credit card required to start.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2 class="fade-up">Ready to get more<br><em>Google reviews?</em></h2>
+  <p class="fade-up">Join businesses using ReviewBoostPRO to grow their reputation on autopilot.</p>
+  <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;" class="fade-up">
+    <button class="btn-primary-hero" onclick="showAuth('signup')">Start free 14-day trial →</button>
+    <button class="btn-secondary-hero" onclick="showFunnel()">See review funnel</button>
+  </div>
+  <p class="cta-bottom-note fade-up">No credit card required · Setup in 5 minutes · Cancel anytime</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:10px 16px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#ffffff;letter-spacing:-.3px;">ReviewBoost</span><span style="background:#22c55e;color:#052e16;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;padding:3px 7px;border-radius:5px;">PRO</span></div>
+  </div>
+  <div class="footer-links">
+    <a href="javascript:void(0)" onclick="scrollToSection('steps');return false;">How it works</a>
+    <a href="javascript:void(0)" onclick="scrollToSection('pricing-new');return false;">Pricing</a>
+    <a href="javascript:void(0)" onclick="scrollToSection('faq-new');return false;">FAQ</a>
+    <a href="#" onclick="showPolicyModal('privacy');return false;">Privacy</a>
+    <a href="#" onclick="showPolicyModal('terms');return false;">Terms</a>
+  </div>
+  <div class="footer-copy">© 2026 ReviewBoostPRO · Made in India 🇮🇳</div>
+</footer>
+</div><!-- screen-landing -->
+
+<!-- PRIVACY / TERMS MODAL -->
+<div id="policy-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9000;overflow-y:auto;padding:2rem 1rem;">
+  <div style="max-width:680px;margin:2rem auto;background:#fff;border-radius:16px;padding:2.5rem;position:relative;">
+    <button onclick="document.getElementById('policy-modal').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:1px solid #eee;border-radius:8px;padding:.4rem .9rem;color:#888;cursor:pointer;font-size:.85rem;">✕ Close</button>
+    <div id="policy-content" style="color:#333;"></div>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+var fadeObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(function(el){fadeObs.observe(el);});
+
+// Nav scroll
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('main-nav-new');
+  if(nav)nav.style.boxShadow=window.scrollY>20?'0 2px 20px rgba(0,0,0,.06)':'none';
+});
+
+// FAQ
+function toggleFaqNew(el){
+  var was=el.classList.contains('open');
+  document.querySelectorAll('.faq-item-new').forEach(function(f){f.classList.remove('open');});
+  if(!was)el.classList.add('open');
+}
+
+var PRIVACY_HTML = `<h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;">Privacy Policy</h2>
+<p style="font-size:.85rem;color:#888;margin-bottom:1rem;"><strong>Last updated:</strong> April 2026</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>1. Information We Collect</strong><br>We collect your name, email address, business name, and customer phone numbers you enter for sending review requests.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>2. How We Use Your Information</strong><br>We use your information solely to provide the ReviewBoostPRO service — generating WhatsApp review request links and tracking response rates.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>3. Data Storage</strong><br>Your data is stored securely on Supabase servers. We do not sell, share, or rent your personal data.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>4. Payments</strong><br>Payments are processed by Razorpay. We do not store your card or banking details.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;"><strong>5. Contact</strong><br>Email us at support@reviewboost.in for any privacy concerns.</p>`;
+
+var TERMS_HTML = `<h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;">Terms of Service</h2>
+<p style="font-size:.85rem;color:#888;margin-bottom:1rem;"><strong>Last updated:</strong> April 2026</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>1. Acceptance</strong><br>By using ReviewBoostPRO, you agree to these terms.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>2. Service</strong><br>ReviewBoostPRO generates WhatsApp review request links. Messages are sent manually from your own WhatsApp.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>3. Free Trial</strong><br>New accounts get 14 days free with 10 review requests. After the trial, a subscription of Rs.499/month is required.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;margin-bottom:1rem;"><strong>4. Payments</strong><br>Subscriptions are billed monthly. Cancel anytime. No refunds for partial months.</p>
+<p style="font-size:.88rem;color:#444;line-height:1.8;"><strong>5. Contact</strong><br>Email us at support@reviewboost.in.</p>`;
+
+function showPolicyModal(type){
+  var modal=document.getElementById('policy-modal');
+  var el=document.getElementById('policy-content');
+  el.innerHTML=type==='privacy'?PRIVACY_HTML:TERMS_HTML;
+  modal.style.display='block';
+}
+
+</script>
+
+
+
+
+<!-- AUTH -->
+<div id="screen-auth" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="auth-grid-bg"></div><div class="auth-glow"></div>
+  <button class="auth-back" onclick="showLanding()">← Back</button>
+  <div class="auth-card">
+    <div class="auth-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:13px 20px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:13px 20px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#ffffff;letter-spacing:-.3px;">ReviewBoost</span><span style="background:#22c55e;color:#052e16;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;padding:3px 7px;border-radius:5px;">PRO</span></div></div>
+    <div class="auth-tabs">
+      <button class="auth-tab" id="tab-login" onclick="switchAuthTab('login')">Sign in</button>
+      <button class="auth-tab active" id="tab-signup" onclick="switchAuthTab('signup')">Create account</button>
+    </div>
+    <div id="form-signup" class="auth-form">
+      <div class="auth-error-banner" id="signup-error"></div>
+      <div class="form-group" id="fg-biz"><label>Business name</label><input type="text" class="form-input" placeholder="e.g. SmileCare Dental Clinic" id="biz-name" oninput="clearFieldError('fg-biz')"><span class="field-error">Please enter your business name.</span></div>
+      <div class="form-group" id="fg-owner"><label>Your name</label><input type="text" class="form-input" placeholder="Dr. Priya Sharma" id="signup-owner" oninput="clearFieldError('fg-owner')"><span class="field-error">Please enter your name.</span></div>
+      <div class="form-group" id="fg-email"><label>Email address</label><input type="email" class="form-input" placeholder="you@yourbusiness.com" id="signup-email" oninput="clearFieldError('fg-email')"><span class="field-error">Please enter a valid email.</span></div>
+      <div class="form-group" id="fg-pass"><label>Password</label><input type="password" class="form-input" placeholder="At least 6 characters" id="signup-pass" oninput="clearFieldError('fg-pass')"><span class="field-error">Password must be at least 6 characters.</span></div>
+      <button class="btn-auth" id="btn-signup" onclick="doSignup()">Create account →</button>
+      <div class="auth-note">By signing up you agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a></div>
+    </div>
+    <div id="form-login" class="auth-form" style="display:none">
+      <div class="auth-error-banner" id="login-error"></div>
+      <div class="form-group" id="fg-login-email"><label>Email address</label><input type="email" class="form-input" placeholder="you@yourbusiness.com" id="login-email" oninput="clearFieldError('fg-login-email')"><span class="field-error">Please enter a valid email.</span></div>
+      <div class="form-group" id="fg-login-pass"><label>Password</label><input type="password" class="form-input" placeholder="Your password" id="login-pass" oninput="clearFieldError('fg-login-pass')"><span class="field-error">Please enter your password.</span></div>
+      <button class="btn-auth" onclick="doLogin()">Sign in →</button>
+      <div class="auth-note"><a href="#">Forgot password?</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="screen-dashboard" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="sidebar">
+    <div class="sb-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:9px 14px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:9px 14px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#ffffff;letter-spacing:-.3px;">ReviewBoost</span><span style="background:#22c55e;color:#052e16;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 6px;border-radius:4px;">PRO</span></div></div>
+    <div class="sb-section">Main</div>
+    <div class="sb-item active" onclick="switchPanel('overview')"><span class="sb-icon">📊</span> Overview</div>
+    <div class="sb-item" onclick="switchPanel('send')"><span class="sb-icon">💬</span> Send Reviews</div>
+    <div class="sb-item notif" onclick="switchPanel('inbox')"><span class="sb-icon">📥</span> Feedback Inbox<div class="notif-dot"></div></div>
+    <div class="sb-section">Manage</div>
+    <div class="sb-item" onclick="switchPanel('customers')"><span class="sb-icon">👥</span> Customers</div>
+    <div class="sb-section">Account</div>
+    <div class="sb-item" onclick="switchPanel('settings')"><span class="sb-icon">⚙️</span> Settings</div>
+    <div class="sb-bottom">
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-avatar-text">BS</div>
+        <div><div class="sb-user-name" id="sb-user-name">Business Owner</div><div class="sb-user-email" id="sb-user-email"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="dash-main">
+    <div class="dash-panel active" id="panel-overview">
+      <div class="dash-header">
+        <div><div class="dash-title">Good morning 👋</div><div class="dash-subtitle">Here's your review performance for the last 30 days.</div></div>
+        <div class="dash-header-right">
+          <button class="btn-sm" onclick="switchPanel('send')">+ Send Review Request</button>
+          <button class="btn-sm" style="color:#ef4444;border-color:#fecaca" onclick="doSignOut()">Sign out</button>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">💬 Messages Sent</div><div class="stat-value" id="stat-sent">0</div><div class="stat-change">from your dashboard</div></div>
+        <div class="stat-card"><div class="stat-label">👁️ Links Opened</div><div class="stat-value" id="stat-opened">0</div><div class="stat-change">customers tapped link</div></div>
+        <div class="stat-card"><div class="stat-label">⭐ Google Redirects</div><div class="stat-value" id="stat-reviews">0</div><div class="stat-change">sent to Google review</div></div>
+        <div class="stat-card"><div class="stat-label">😟 Private Feedback</div><div class="stat-value" id="stat-feedback">0</div><div class="stat-change">received privately</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Messages sent (last 7 days)</div></div>
+          <div class="chart-bars"><div class="bar-col" style="height:40%"></div><div class="bar-col" style="height:65%"></div><div class="bar-col" style="height:50%"></div><div class="bar-col" style="height:80%"></div><div class="bar-col" style="height:60%"></div><div class="bar-col" style="height:90%"></div><div class="bar-col" style="height:45%"></div></div>
+          <div class="bar-labels"><div class="bar-lbl">Mon</div><div class="bar-lbl">Tue</div><div class="bar-lbl">Wed</div><div class="bar-lbl">Thu</div><div class="bar-lbl">Fri</div><div class="bar-lbl">Sat</div><div class="bar-lbl">Sun</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Conversion funnel</div></div>
+          <div style="margin-top:.5rem">
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;color:#6b7280;margin-bottom:.4rem"><span>Sent → Opened</span><span id="conv1">0%</span></div>
+            <div style="background:#f0f0f0;border-radius:6px;height:8px;margin-bottom:.75rem"><div id="conv1-bar" style="height:8px;border-radius:6px;background:linear-gradient(90deg,#25D366,#4ade80);width:0%;transition:width 1s .5s"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;color:#6b7280;margin-bottom:.4rem"><span>Opened → Rated</span><span id="conv2">0%</span></div>
+            <div style="background:#f0f0f0;border-radius:6px;height:8px;margin-bottom:.75rem"><div id="conv2-bar" style="height:8px;border-radius:6px;background:linear-gradient(90deg,#3b82f6,#60a5fa);width:0%;transition:width 1s .7s"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;color:#6b7280;margin-bottom:.4rem"><span>Rated 4–5 → Google</span><span id="conv3">0%</span></div>
+            <div style="background:#f0f0f0;border-radius:6px;height:8px"><div id="conv3-bar" style="height:8px;border-radius:6px;background:linear-gradient(90deg,#f59e0b,#fcd34d);width:0%;transition:width 1s .9s"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Recent sends</div><button class="btn-sm" onclick="switchPanel('send')">+ New send</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Phone</th><th>Sent</th><th>Status</th></tr></thead><tbody id="activity-table"><tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:2rem">No messages sent yet. <a href="#" onclick="switchPanel('send');return false" style="color:#15803d">Send your first one →</a></td></tr></tbody></table></div>
+      </div>
+    </div>
+    <div class="dash-panel" id="panel-send">
+      <div class="dash-header">
+        <div>
+          <div class="dash-title">Send Review Request</div>
+          <div class="dash-subtitle">Opens WhatsApp with your message pre-filled — you hit send</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;" class="send-grid">
+
+        <!-- LEFT: Form -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+
+          <!-- Customer details card -->
+          <div class="card" style="padding:1.5rem;">
+            <div style="font-size:.8rem;font-weight:700;color:#0a0a0a;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;">
+              <span style="background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.3rem .5rem;font-size:.9rem;">👤</span>
+              Customer Details
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.9rem;">
+              <div>
+                <label style="font-size:.72rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.4rem;">Customer Name</label>
+                <input type="text" class="input-field" id="cust-name" placeholder="e.g. Priya Sharma" oninput="updatePreview()" style="font-size:.9rem;padding:.7rem .9rem;">
+              </div>
+              <div>
+                <label style="font-size:.72rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.4rem;">WhatsApp Number</label>
+                <input type="text" class="input-field" id="cust-phone" placeholder="+91 98765 43210" oninput="updatePreview()" style="font-size:.9rem;padding:.7rem .9rem;">
+              </div>
+              <button class="btn-whatsapp" onclick="sendWhatsApp()" style="margin-top:.25rem;width:100%;padding:.9rem;background:#25D366;border:none;border-radius:10px;font-size:.92rem;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 4px 14px rgba(37,211,102,.3);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4C7.63 4 4 7.63 4 12.05c0 1.42.37 2.8 1.07 4.02L4 20l4.05-1.06a8.02 8.02 0 003.98 1.02h.03c4.42 0 8.05-3.63 8.05-8.05 0-2.15-.84-4.17-2.51-5.59z" fill="#fff"/></svg>
+                Open in WhatsApp &amp; Send
+              </button>
+              <button style="background:none;border:none;font-size:.75rem;color:#25D366;text-decoration:underline;padding:0;cursor:pointer;text-align:center;" onclick="testWhatsApp()">Test link first (opens preview)</button>
+              <div id="wa-fallback" style="display:none;background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.65rem 1rem;font-size:.82rem;color:#15803d;"></div>
+            </div>
+          </div>
+
+          <!-- Template card -->
+          <div class="card" style="padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+              <div style="font-size:.8rem;font-weight:700;color:#0a0a0a;display:flex;align-items:center;gap:.5rem;">
+                <span style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:.3rem .5rem;font-size:.9rem;">⚙️</span>
+                Message Template
+              </div>
+              <button class="btn-sm btn-green" onclick="saveTemplate()" style="font-size:.72rem;">Save</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.9rem;">
+              <div>
+                <label style="font-size:.72rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.4rem;">Message Text</label>
+                <div style="font-size:.7rem;color:#9ca3af;margin-bottom:.4rem;">Use {name}, {business}, {review_link}</div>
+                <textarea class="input-field" id="msg-template" rows="5" oninput="updatePreview()" style="resize:vertical;font-size:.83rem;line-height:1.6;">Hi {name} 👋
+
+Thank you for visiting {business}! We hope you had a great experience.
+
+Could you spare 30 seconds to rate us? It means the world to small businesses like ours! 🙏
+
+👉 {review_link}</textarea>
+              </div>
+              <div>
+                <label style="font-size:.72rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.4rem;">Google Review Link <span style="color:#ef4444;">*</span></label>
+                <input type="text" class="input-field" id="google-review-link" placeholder="https://g.page/your-business/review" oninput="onGoogleLinkInput()" style="font-size:.83rem;">
+                <div style="font-size:.7rem;color:#9ca3af;margin-top:.35rem;line-height:1.5;">Find in Google Business Profile → Get more reviews → Share review form</div>
+                <div id="google-link-limit-msg" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:.6rem .9rem;font-size:.8rem;color:#ef4444;margin-top:.4rem;">Max link changes reached. Contact support.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: WhatsApp Preview -->
+        <div style="position:sticky;top:1.5rem;">
+          <div class="card" style="padding:1.5rem;">
+            <div style="font-size:.8rem;font-weight:700;color:#0a0a0a;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;">
+              <span style="background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.3rem .5rem;font-size:.9rem;">💬</span>
+              WhatsApp Preview
+            </div>
+            <!-- Phone mockup -->
+            <div style="background:#e5ddd5;border-radius:14px;padding:1rem;min-height:280px;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><rect width=%2220%22 height=%2220%22 fill=%22%23e5ddd5%22/></svg>');">
+              <!-- WA header bar -->
+              <div style="background:#075e54;border-radius:10px 10px 0 0;padding:.6rem .9rem;display:flex;align-items:center;gap:.6rem;margin:-1rem -1rem .75rem -1rem;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0;" id="wa-avatar-preview">YB</div>
+                <div>
+                  <div style="font-size:.78rem;font-weight:700;color:#fff;" id="wa-biz-name-preview">Your Business</div>
+                  <div style="font-size:.65rem;color:rgba(255,255,255,.6);">online</div>
+                </div>
+              </div>
+              <!-- Message bubble -->
+              <div style="background:#fff;border-radius:0 10px 10px 10px;padding:.75rem 1rem;max-width:90%;box-shadow:0 1px 3px rgba(0,0,0,.1);font-size:.82rem;line-height:1.6;color:#111;">
+                <span id="wa-msg-preview">Hi <em>Customer</em> 👋<br><br>Thank you for visiting <strong>Your Business</strong>! We hope you had a great experience.<br><br>Could you spare 30 seconds to rate us? It means the world to small businesses like ours! 🙏<br><br>👉 <span style="color:#25D366;text-decoration:underline;">review link</span></span>
+                <div style="font-size:.65rem;color:#9ca3af;text-align:right;margin-top:.4rem;">just now · ✓✓</div>
+              </div>
+            </div>
+            <div style="margin-top:.9rem;background:#f0fdf4;border:1px solid #d1fae5;border-radius:10px;padding:.65rem .9rem;font-size:.75rem;color:#15803d;display:flex;align-items:center;gap:.5rem;">
+              <span>📱</span>
+              <span>Sends <strong>from your own WhatsApp</strong> — no API or approvals needed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent sends -->
+      <div class="card" style="margin-top:1.25rem;">
+        <div class="card-header">
+          <div class="card-title">Recent Sends</div>
+          <div style="display:flex;gap:.5rem;">
+            <button class="btn-sm" onclick="exportCSV()" title="Export to CSV">⬇ Export</button>
+          </div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Phone</th><th>Sent at</th><th>Status</th></tr></thead><tbody id="send-table"><tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:1.5rem;font-size:.83rem;">No messages sent yet. Send your first one above!</td></tr></tbody></table></div>
+      </div>
+
+      <!-- CSV Bulk Upload -->
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-header">
+          <div class="card-title">📋 Bulk Send via CSV</div>
+          <a href="#" onclick="downloadCSVTemplate();return false;" style="font-size:.75rem;color:#15803d;font-weight:600;">Download template</a>
+        </div>
+        <div style="font-size:.78rem;color:#6b7280;margin-bottom:1rem;line-height:1.6;">Upload a CSV with columns <code style="background:#f5f5f5;padding:.1rem .4rem;border-radius:4px;">name,phone</code> to send WhatsApp review requests to multiple customers at once.</div>
+        <div id="csv-drop-zone" style="border:2px dashed #e8ecf0;border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;background:#fafafa;" onclick="document.getElementById('csv-file-input').click()" ondragover="event.preventDefault();this.style.borderColor='#25D366'" ondragleave="this.style.borderColor='#e8ecf0'" ondrop="handleCSVDrop(event)">
+          <div style="font-size:2rem;margin-bottom:.5rem;">📄</div>
+          <div style="font-size:.85rem;font-weight:600;color:#374151;">Click to upload or drag & drop</div>
+          <div style="font-size:.72rem;color:#9ca3af;margin-top:.25rem;">CSV files only · name, phone columns required</div>
+          <input type="file" id="csv-file-input" accept=".csv" style="display:none" onchange="handleCSVFile(this)">
+        </div>
+        <div id="csv-preview" style="display:none;margin-top:1rem;">
+          <div style="font-size:.8rem;font-weight:600;color:#0a0a0a;margin-bottom:.5rem;" id="csv-preview-title"></div>
+          <div style="max-height:200px;overflow-y:auto;border:1px solid #e8ecf0;border-radius:8px;margin-bottom:.75rem;">
+            <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+              <thead><tr><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Name</th><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Phone</th><th style="padding:.5rem .75rem;text-align:left;background:#f5f7fa;color:#6b7280;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e8ecf0;">Status</th></tr></thead>
+              <tbody id="csv-preview-table"></tbody>
+            </table>
+          </div>
+          <button id="csv-send-btn" onclick="sendCSVBatch()" style="width:100%;padding:.8rem;background:#25D366;border:none;border-radius:10px;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 3px 12px rgba(37,211,102,.25);">Send to all contacts →</button>
+          <div id="csv-progress" style="display:none;margin-top:.75rem;"></div>
+        </div>
+      </div>
+
+      <style>
+        .send-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;}
+        @media(max-width:768px){.send-grid{grid-template-columns:1fr!important;}}
+        code{font-family:monospace;}
+      </style>
+    </div>
+    <div class="dash-panel" id="panel-inbox">
+      <div class="dash-header"><div><div class="dash-title">Feedback Inbox</div><div class="dash-subtitle">Private feedback from customers who rated 1–3 stars.</div></div></div>
+      <div class="card"><div id="inbox-list"><div id="inbox-dynamic"><div style="text-align:center;color:#9ca3af;padding:2rem">No feedback received yet. It will appear here when customers submit 1-3 star ratings.</div></div></div></div>
+    </div>
+    <div class="dash-panel" id="panel-customers">
+      <div class="dash-header"><div><div class="dash-title">Customers</div><div class="dash-subtitle">Your customer list.</div></div><button class="btn-sm green" onclick="switchPanel('send')">+ Add &amp; Send</button></div>
+      <div class="card"><div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Sent</th><th>Last contact</th></tr></thead><tbody id="customers-table"><tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:2rem">No customers yet.</td></tr></tbody></table></div></div>
+    </div>
+    <div class="dash-panel" id="panel-settings">
+      <div class="dash-header"><div><div class="dash-title">Settings</div><div class="dash-subtitle">Configure your ReviewBoostPRO account.</div></div></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Business Profile</div><button class="btn-sm green" onclick="saveSettings()">Save</button></div>
+          <div style="display:flex;flex-direction:column;gap:.85rem">
+            <div class="form-group"><label style="font-size:.78rem;color:#6b7280;display:block;margin-bottom:.3rem">Business name</label><input type="text" class="input-field" id="settings-biz" placeholder="Your Business Name"></div>
+            <div class="form-group"><label style="font-size:.78rem;color:#6b7280;display:block;margin-bottom:.3rem">Business type</label><select class="input-field"><option>Clinic / Hospital</option><option>Boutique / Retail</option><option>Restaurant / Cafe</option><option>Salon / Spa</option><option>Pharmacy</option><option>Other</option></select></div>
+            <div class="form-group"><label style="font-size:.78rem;color:#6b7280;display:block;margin-bottom:.3rem">Google Review URL</label><input type="text" class="input-field" id="settings-google-link" placeholder="https://g.page/your-business/review"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Notifications</div></div>
+          <div class="settings-row"><div><div class="settings-key">New feedback alert</div><div class="settings-val">Get notified when 1–3 star feedback arrives</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="settings-row"><div><div class="settings-key">Weekly report</div><div class="settings-val">Summary email every Monday</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #f0f0f0">
+            <button class="btn-sm" style="color:#ef4444;border-color:#fecaca" onclick="doSignOut()">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile bottom nav -->
+  <div class="dash-bottom-nav" id="dash-bottom-nav">
+    <button class="dash-bn-item active" id="bn-overview" onclick="switchPanel('overview');updateBnActive('bn-overview')">
+      <span class="bn-icon">📊</span>Overview
+    </button>
+    <button class="dash-bn-item" id="bn-send" onclick="switchPanel('send');updateBnActive('bn-send')">
+      <span class="bn-icon">💬</span>Send
+    </button>
+    <button class="dash-bn-item" id="bn-inbox" onclick="switchPanel('inbox');updateBnActive('bn-inbox')">
+      <span class="bn-icon">📥</span>Inbox
+    </button>
+    <button class="dash-bn-item" id="bn-customers" onclick="switchPanel('customers');updateBnActive('bn-customers')">
+      <span class="bn-icon">👥</span>Customers
+    </button>
+    <button class="dash-bn-item" id="bn-settings" onclick="switchPanel('settings');updateBnActive('bn-settings')">
+      <span class="bn-icon">⚙️</span>Settings
+    </button>
+  </div>
+</div>
+
+<!-- CUSTOMER REVIEW SCREEN (real customer visits via WhatsApp link) -->
+<div id="screen-customer-funnel" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="auth-grid-bg"></div>
+  <div style="width:100%;max-width:420px;margin:0 auto;padding:2rem 1.25rem;position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#25D366,#16a34a);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 1rem;" id="customer-avatar">MB</div>
+      <div style="font-size:1rem;font-weight:700;color:rgba(240,246,252,.8);" id="customer-biz-name">My Business</div>
+    </div>
+    <div style="background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:1.6rem;font-weight:800;color:#f0f6fc;margin-bottom:.5rem;">How was your visit?</div>
+      <div style="font-size:.88rem;color:rgba(240,246,252,.45);margin-bottom:1.75rem;">Tap a star to rate your experience</div>
+      <div style="display:flex;justify-content:center;gap:.75rem;margin-bottom:1.25rem;" id="customer-star-row">
+        <button onclick="customerSelectStar(1)" style="font-size:2.5rem;background:none;border:none;cursor:pointer;padding:.1rem;transition:transform .15s;line-height:1;" id="cstar-1">⭐</button>
+        <button onclick="customerSelectStar(2)" style="font-size:2.5rem;background:none;border:none;cursor:pointer;padding:.1rem;transition:transform .15s;line-height:1;" id="cstar-2">⭐</button>
+        <button onclick="customerSelectStar(3)" style="font-size:2.5rem;background:none;border:none;cursor:pointer;padding:.1rem;transition:transform .15s;line-height:1;" id="cstar-3">⭐</button>
+        <button onclick="customerSelectStar(4)" style="font-size:2.5rem;background:none;border:none;cursor:pointer;padding:.1rem;transition:transform .15s;line-height:1;" id="cstar-4">⭐</button>
+        <button onclick="customerSelectStar(5)" style="font-size:2.5rem;background:none;border:none;cursor:pointer;padding:.1rem;transition:transform .15s;line-height:1;" id="cstar-5">⭐</button>
+      </div>
+      <div style="font-size:.88rem;color:rgba(240,246,252,.5);min-height:1.5em;" id="customer-star-label">Tap a star above</div>
+      <button id="customer-continue-btn" onclick="customerContinue()" style="display:none;width:100%;margin-top:1.25rem;padding:1rem;background:#25D366;border:none;border-radius:12px;font-size:1rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(37,211,102,.3);">Continue →</button>
+    </div>
+    <div style="text-align:center;font-size:.72rem;color:rgba(240,246,252,.2);">Powered by ReviewBoostPRO</div>
+  </div>
+</div>
+
+<div id="screen-funnel" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="auth-grid-bg"></div><div class="auth-glow"></div>
+
+  <div style="width:100%;max-width:520px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;">
+
+    <!-- Back to home -->
+    <button onclick="showLanding()" style="display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.5rem 1rem;color:rgba(255,255,255,.7);font-size:.82rem;font-weight:500;cursor:pointer;margin-bottom:1.5rem;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+      ← Back to Home
+    </button>
+
+    <!-- Demo label -->
+    <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);border-radius:100px;padding:.3rem .9rem;font-size:.72rem;font-weight:700;color:#4ade80;letter-spacing:.05em;margin-bottom:1.25rem;">
+      👁️ LIVE DEMO — How the funnel works
+    </div>
+
+    <!-- Rating card -->
+    <div class="funnel-card" style="margin-bottom:1.25rem;">
+      <div style="font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.4rem;"><span id="funnel-biz-name">My Business</span></div>
+      <div class="funnel-h" style="font-size:1.4rem;margin-bottom:.4rem;">How was your visit?</div>
+      <div class="funnel-sub" style="margin-bottom:1.5rem;">Tap a star below to see what happens next ↓</div>
+      <div class="star-row" id="demo-star-row">
+        <button class="star-btn" onclick="demoSelectStar(1)">⭐</button>
+        <button class="star-btn" onclick="demoSelectStar(2)">⭐</button>
+        <button class="star-btn" onclick="demoSelectStar(3)">⭐</button>
+        <button class="star-btn" onclick="demoSelectStar(4)">⭐</button>
+        <button class="star-btn" onclick="demoSelectStar(5)">⭐</button>
+      </div>
+      <div class="star-label" id="demo-star-label" style="margin-top:.75rem;">Tap a star to see the magic ✨</div>
+    </div>
+
+    <!-- Explainer: always visible -->
+    <div id="demo-result" style="display:none;"></div>
+
+    <!-- Always-visible path explanation -->
+    <div id="demo-paths" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.5rem;">
+
+      <!-- Low stars path -->
+      <div id="path-low" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.1rem;transition:all .3s;">
+        <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:.6rem;">⭐⭐⭐ 1–3 Stars</div>
+        <div style="font-size:1.6rem;margin-bottom:.5rem;">🔒</div>
+        <div style="font-size:.82rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:.3rem;">Private Feedback Form</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.5);line-height:1.6;">Customer shares their concern directly with you — privately. You get a chance to fix it before it becomes a public review.</div>
+      </div>
+
+      <!-- High stars path -->
+      <div id="path-high" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.1rem;transition:all .3s;">
+        <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:.6rem;">⭐⭐⭐⭐⭐ 4–5 Stars</div>
+        <div style="font-size:1.6rem;margin-bottom:.5rem;">🚀</div>
+        <div style="font-size:.82rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:.3rem;">Google Review Page</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.5);line-height:1.6;">Happy customers are sent directly to your Google listing to leave a 5-star review. Your public rating only ever goes up.</div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button onclick="showAuth('signup')" style="width:100%;padding:1rem;background:#25D366;border:none;border-radius:12px;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,.35);">Start free trial — Set this up in 5 min →</button>
+      <button onclick="showLanding()" style="margin-top:.75rem;background:none;border:none;color:rgba(255,255,255,.4);font-size:.8rem;cursor:pointer;text-decoration:underline;">Go back to home page</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function demoSelectStar(n) {
+  // Highlight stars
+  var btns = document.querySelectorAll('#demo-star-row .star-btn');
+  btns.forEach(function(b, i) {
+    b.style.opacity = i < n ? '1' : '0.3';
+    b.style.transform = i < n ? 'scale(1.15)' : 'scale(1)';
+  });
+
+  var label = document.getElementById('demo-star-label');
+  var pathLow = document.getElementById('path-low');
+  var pathHigh = document.getElementById('path-high');
+
+  // Reset both
+  pathLow.style.border = '1px solid rgba(255,255,255,.1)';
+  pathLow.style.background = 'rgba(255,255,255,.05)';
+  pathHigh.style.border = '1px solid rgba(255,255,255,.1)';
+  pathHigh.style.background = 'rgba(255,255,255,.05)';
+
+  if(n <= 3) {
+    label.innerHTML = '😟 ' + n + ' star' + (n>1?'s':'') + ' — directed to <strong style="color:#fb923c;">private feedback form</strong>';
+    pathLow.style.border = '2px solid #fb923c';
+    pathLow.style.background = 'rgba(251,146,60,.08)';
+  } else {
+    label.innerHTML = '🎉 ' + n + ' stars — directed to <strong style="color:#4ade80;">Google review page</strong>';
+    pathHigh.style.border = '2px solid #25D366';
+    pathHigh.style.background = 'rgba(37,211,102,.08)';
+  }
+}
+
+// ── REAL CUSTOMER FUNNEL ──
+function customerSelectStar(n) {
+  appState.selectedStar = n;
+  for(var i=1;i<=5;i++){
+    var s=document.getElementById('cstar-'+i);
+    if(s){s.style.opacity=i<=n?'1':'0.25';s.style.transform=i<=n?'scale(1.1)':'scale(1)';}
+  }
+  // Set avatar initials from business name
+  var bn=document.getElementById('customer-biz-name');
+  var av=document.getElementById('customer-avatar');
+  if(av&&bn) av.textContent=(bn.textContent||'MB').replace(/[^a-zA-Z ]/g,'').trim().split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase()||'MB';
+
+  var label=document.getElementById('customer-star-label');
+  var btn=document.getElementById('customer-continue-btn');
+  if(label){
+    if(n<=3) label.innerHTML='<span style="color:#fb923c;">'+n+' star'+(n>1?'s':'')+'</span> — we\'d love your feedback';
+    else label.innerHTML='<span style="color:#4ade80;">'+n+' star'+(n>1?'s':'')+'</span> — thank you!';
+  }
+  if(btn) btn.style.display='block';
+}
+function customerContinue(){
+  var n=appState.selectedStar;
+  if(!n) return;
+  if(n>=4){
+    trackEvent('rated',appState.currentSendId,n);
+    trackEvent('google_redirect',appState.currentSendId,n);
+    var gl=appState.googleLink||'https://search.google.com/local/writereview';
+    window.location.href=gl;
+  } else {
+    trackEvent('rated',appState.currentSendId,n);
+    showScreen('screen-feedback');
+    var fi=document.getElementById('feedback-text');if(fi)fi.value='';
+    document.querySelectorAll('.tag-btn').forEach(function(b){b.classList.remove('active');});
+  }
+}
+</script>
+
+<!-- FEEDBACK -->
+<div id="screen-feedback" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="auth-grid-bg"></div>
+  <div class="feedback-card">
+    <div class="feedback-icon">🙏</div>
+    <div class="feedback-h">We're sorry to hear that</div>
+    <div class="feedback-sub">We'd love to make things right. What could we have done better?</div>
+    <div class="feedback-tags" id="feedback-tags">
+      <button class="tag-btn" onclick="toggleTag(this)">⏱️ Long wait time</button>
+      <button class="tag-btn" onclick="toggleTag(this)">😐 Staff attitude</button>
+      <button class="tag-btn" onclick="toggleTag(this)">💰 Pricing</button>
+      <button class="tag-btn" onclick="toggleTag(this)">🏥 Cleanliness</button>
+      <button class="tag-btn" onclick="toggleTag(this)">📋 Poor communication</button>
+      <button class="tag-btn" onclick="toggleTag(this)">Other</button>
+    </div>
+    <textarea class="textarea-field" placeholder="Tell us more... (optional)" rows="4" id="feedback-text"></textarea>
+    <button class="btn-funnel" style="margin-top:1rem" onclick="submitFeedback()">Submit feedback →</button>
+    <div style="font-size:.75rem;color:var(--dim);margin-top:.75rem;">🙏 Thank you for helping us improve.</div>
+  </div>
+</div>
+
+<!-- THANK YOU -->
+<div id="screen-thanks" class="screen" style="display:none;position:fixed;inset:0;z-index:2000;">
+  <div class="auth-grid-bg" style="pointer-events:none;position:fixed;inset:0;"></div>
+  <div class="funnel-card" style="text-align:center;max-width:440px;width:100%;position:relative;z-index:1;margin:1rem;">
+    <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+    <div class="funnel-h">Thank you!</div>
+    <div class="funnel-sub" id="thanks-msg">Thank you for sharing!</div>
+    <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.4)">You may close this tab.</div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ═══ SUPABASE CONFIG ═══
+var SUPA_URL = 'https://cauqeiyzxyvpetntplkz.supabase.co';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNhdXFlaXl6eHl2cGV0bnRwbGt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NzU5MjksImV4cCI6MjA5MDU1MTkyOX0.MSG8ThadxzV7CMcT4gl9Xj1lFdmTEKV--MB-JtBhegc';
+var sb = null;
+
+// Page always visible — no hiding
+
+// ═══ STATE ═══
+var appState = {
+  bizName: 'My Business', googleLink: '',
+  messageTemplate: "Hi {name} \uD83D\uDC4B\n\nThank you for visiting {business}! We hope you had a great experience.\n\nCould you spare 30 seconds to rate us? It means the world to small businesses like ours! \uD83D\uDE4F\n\n\uD83D\uDC49 {review_link}",
+  sends: [], customers: [], stats: { sent:0, opened:0, reviews:0, feedback:0 },
+  selectedStar: 0, currentUser: null, currentSendId: null
+};
+try {
+  var _sv = localStorage.getItem('rbp_state');
+  if(_sv) { var _ps = JSON.parse(_sv); appState = Object.assign(appState, _ps); }
+} catch(e) {}
+
+function saveState() {
+  try {
+    localStorage.setItem('rbp_state', JSON.stringify({
+      bizName: appState.bizName, googleLink: appState.googleLink,
+      messageTemplate: appState.messageTemplate,
+      sends: appState.sends.slice(-50), customers: appState.customers.slice(-50),
+      stats: appState.stats
+    }));
+  } catch(e) {}
+}
+
+// ═══ INIT ═══
+var _initRetries = 0;
+function initApp() {
+  // Init Supabase - retry if CDN not loaded yet
+  if(window.supabase && window.supabase.createClient) {
+    sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  } else {
+    _initRetries++;
+    if(_initRetries < 10) {
+      setTimeout(initApp, 200);
+      return;
+    }
+    // Supabase failed to load — show landing page anyway
+    showScreen('screen-landing');
+    
+    return;
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  if(params.get('review') === 'true') {
+    // Customer review flow — show clean customer screen (not demo)
+    var sendId = params.get('sid') || null;
+    var bizParam = params.get('biz') || null;
+    appState.currentSendId = sendId;
+    if(bizParam) appState.bizName = decodeURIComponent(bizParam);
+    var glParam = params.get('gl');
+    if(glParam) appState.googleLink = decodeURIComponent(glParam);
+    trackEvent('opened', sendId);
+    showScreen('screen-customer-funnel');
+    var bn = document.getElementById('customer-biz-name');
+    if(bn) bn.textContent = appState.bizName || 'My Business';
+    appState.selectedStar = 0;
+    prefetchGoogleLink(sendId);
+    return;
+  }
+
+  // Check if logged in
+  if(sb) {
+    sb.auth.getSession().then(function(res) {
+      var session = res.data && res.data.session;
+      if(session) {
+        appState.currentUser = session.user;
+        loadAndGoToDashboard();
+      } else {
+        showScreen('screen-landing');
+        
+      }
+    }).catch(function() {
+      showScreen('screen-landing');
+      
+    });
+  } else {
+    showScreen('screen-landing');
+    
+  }
+}
+
+// Wait for supabase CDN to load
+if(document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { setTimeout(initApp, 50); });
+} else {
+  setTimeout(initApp, 50);
+}
+
+// ═══ SUPABASE FUNCTIONS ═══
+async function doSignup() {
+  var biz   = document.getElementById('biz-name').value.trim();
+  var owner = document.getElementById('signup-owner').value.trim();
+  var email = document.getElementById('signup-email').value.trim();
+  var pass  = document.getElementById('signup-pass').value;
+  var err   = document.getElementById('signup-error');
+
+  // Validate
+  var valid = true;
+  ['fg-biz','fg-owner','fg-email','fg-pass'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.classList.remove('has-error');
+  });
+  err.style.display = 'none';
+  if(!biz)  { setFieldError('fg-biz','Please enter your business name.'); valid=false; }
+  if(!owner){ setFieldError('fg-owner','Please enter your name.'); valid=false; }
+  if(!email||!isValidEmail(email)){ setFieldError('fg-email','Please enter a valid email.'); valid=false; }
+  if(!pass||pass.length<6){ setFieldError('fg-pass','Password must be at least 6 characters.'); valid=false; }
+  if(!valid){ err.textContent='Please fix the errors above.'; err.style.display='block'; return; }
+
+  var btn = document.getElementById('btn-signup');
+  btn.textContent='Creating account...'; btn.style.opacity='.7'; btn.style.pointerEvents='none';
+
+  // Check Supabase loaded
+  if(!sb){
+    err.textContent='Connection error. Please refresh and try again.';
+    err.style.display='block';
+    btn.textContent='Create account →'; btn.style.opacity='1'; btn.style.pointerEvents='auto';
+    return;
+  }
+
+  // Step 1: Create auth user
+  var signupResult = await sb.auth.signUp({
+    email: email,
+    password: pass,
+    options: { data: { full_name: owner, business_name: biz } }
+  });
+
+  if(signupResult.error) {
+    var msg = signupResult.error.message || 'Signup failed';
+    if(msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('already exists')) {
+      msg = 'This email is already registered. Please sign in instead.';
+    }
+    err.textContent = msg; err.style.display='block';
+    btn.textContent='Create account →'; btn.style.opacity='1'; btn.style.pointerEvents='auto';
+    return;
+  }
+
+  // Step 2: Save biz name locally
+  appState.bizName = biz;
+  appState._pendingOwner = owner;
+  saveState();
+
+  // Step 3: Auto login immediately (email confirmation is OFF)
+  var loginResult = await sb.auth.signInWithPassword({ email: email, password: pass });
+
+  if(loginResult.error) {
+    // Signup worked but auto-login failed — send them to sign in tab
+    err.textContent = ''; err.style.display='none';
+    switchAuthTab('login');
+    document.getElementById('login-email').value = email;
+    showToast('Account created! Please sign in now.');
+    return;
+  }
+
+  // Step 4: Logged in — save profile and go to dashboard
+  appState.currentUser = loginResult.data.user;
+  try {
+    await sb.from('profiles').upsert({
+      id: appState.currentUser.id,
+      business_name: biz,
+      owner_name: owner
+    });
+  } catch(e) {}
+
+  await loadAndGoToDashboard();
+}
+
+
+async function doLogin() {
+  var email = document.getElementById('login-email').value.trim();
+  var pass = document.getElementById('login-pass').value;
+  var err = document.getElementById('login-error');
+  var valid = true;
+  ['fg-login-email','fg-login-pass'].forEach(function(id) {
+    var el = document.getElementById(id); if(el) el.classList.remove('has-error');
+  });
+  err.style.display = 'none';
+  if(!email||!isValidEmail(email)) { setFieldError('fg-login-email','Please enter a valid email.'); valid=false; }
+  if(!pass) { setFieldError('fg-login-pass','Please enter your password.'); valid=false; }
+  else if(pass.length<6) { setFieldError('fg-login-pass','Password must be at least 6 characters.'); valid=false; }
+  if(!valid) { err.textContent='Please check your email and password.'; err.style.display='block'; return; }
+
+  var btn = document.querySelector('#form-login .btn-auth');
+  btn.textContent = 'Signing in...'; btn.style.opacity='.7'; btn.style.pointerEvents='none';
+
+  if(sb) {
+    var result = await sb.auth.signInWithPassword({ email: email, password: pass });
+    if(result.error) {
+      err.textContent = result.error.message; err.style.display='block';
+      btn.textContent='Sign in →'; btn.style.opacity='1'; btn.style.pointerEvents='auto';
+      return;
+    }
+    appState.currentUser = result.data.user;
+    await loadAndGoToDashboard();
+  } else {
+    appState.bizName = email.split('@')[0];
+    goToDashboard();
+  }
+}
+
+async function doSignOut() {
+  if(sb) await sb.auth.signOut();
+  appState.currentUser = null;
+  localStorage.removeItem('rbp_state');
+  showLanding();
+}
+
+async function loadAndGoToDashboard() {
+  if(sb && appState.currentUser) {
+    var r = await sb.from('profiles').select('*').eq('id', appState.currentUser.id).single();
+    if(r.data && r.data.business_name) {
+      // Profile exists — load it
+      appState.bizName = r.data.business_name || 'My Business';
+      appState.googleLink = r.data.google_review_url || '';
+      if(r.data.message_template) appState.messageTemplate = r.data.message_template;
+      saveState();
+    } else {
+      // Profile missing — save from auth metadata (first login after email confirmation)
+      var meta = appState.currentUser.user_metadata || {};
+      var bizFromMeta = meta.business_name || meta.full_name || 'My Business';
+      var ownerFromMeta = meta.full_name || '';
+      appState.bizName = bizFromMeta;
+      saveState();
+      // Save to profiles table now that user is confirmed
+      try {
+        await sb.from('profiles').upsert({
+          id: appState.currentUser.id,
+          business_name: bizFromMeta,
+          owner_name: ownerFromMeta
+        });
+      } catch(e) {}
+    }
+    await loadStats();
+  }
+  goToDashboard();
+}
+
+async function loadStats() {
+  if(!sb || !appState.currentUser) return;
+  var uid = appState.currentUser.id;
+  var s = await sb.from('sends').select('*').eq('user_id', uid).order('sent_at',{ascending:false}).limit(50);
+  var f = await sb.from('feedback').select('*').eq('user_id', uid).order('received_at',{ascending:false}).limit(20);
+  if(s.data) {
+    appState.sends = s.data.map(function(x) {
+      return { id:x.id, name:x.customer_name, phone:x.customer_phone,
+        time: new Date(x.sent_at).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}),
+        status:x.status||'Sent', rating:x.rating||0 };
+    });
+    appState.stats.sent = s.data.length;
+    // Count stats from sends table directly (more reliable than events)
+    appState.stats.reviews = s.data.filter(function(x){return x.status==='Reviewed'&&(x.rating||0)>=4;}).length;
+  }
+  // Get events for opened/feedback counts
+  var e = await sb.from('events').select('event_type,send_id').eq('user_id', uid);
+  if(e.data && e.data.length > 0) {
+    appState.stats.opened = e.data.filter(function(x){return x.event_type==='opened';}).length;
+    appState.stats.reviews = e.data.filter(function(x){return x.event_type==='google_redirect';}).length;
+    appState.stats.feedback = e.data.filter(function(x){return x.event_type==='feedback_submitted';}).length;
+  } else {
+    // Fallback: count from feedback table
+    appState.stats.feedback = f.data ? f.data.length : 0;
+  }
+  if(f.data && f.data.length > 0) renderInbox(f.data);
+}
+
+function renderInbox(items) {
+  var d = document.getElementById('inbox-dynamic'); if(!d) return;
+  d.innerHTML = '';
+  items.forEach(function(item) {
+    var bc = item.rating <= 2 ? '#ef4444' : '#f59e0b';
+    var tags = item.tags ? item.tags.join(', ') : '';
+    var time = new Date(item.received_at).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    var div = document.createElement('div');
+    div.style.cssText = 'border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:1.25rem;margin-bottom:.75rem;border-left:3px solid '+bc+';background:#fff';
+    div.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">'+
+      '<div style="font-size:.88rem;font-weight:600;color:#111">'+item.rating+' star'+(item.rating>1?'s':'')+' — private feedback</div>'+
+      '<button class="btn-sm">Mark resolved</button></div>'+
+      '<div style="font-size:.85rem;color:#4a6b4a;line-height:1.6">'+(tags?'Tags: '+tags+'<br>':'')+(item.message||'No additional comments.')+'</div>'+
+      '<div style="font-size:.73rem;color:#8da08d;margin-top:.5rem">Received '+time+'</div>';
+    div.querySelector('.btn-sm').addEventListener('click', function() {
+      div.style.opacity='0.4';
+      if(sb) sb.from('feedback').update({resolved:true}).eq('id',item.id);
+    });
+    d.appendChild(div);
+  });
+}
+
+async function saveProfileToSupabase() {
+  if(!sb || !appState.currentUser) return;
+  await sb.from('profiles').upsert({
+    id: appState.currentUser.id,
+    business_name: appState.bizName,
+    google_review_url: appState.googleLink,
+    message_template: appState.messageTemplate
+  });
+}
+
+// ═══ EVENT TRACKING ═══
+async function trackEvent(type, sendId, rating) {
+  if(!sb) return;
+  try {
+    var payload = { event_type: type };
+    if(sendId) payload.send_id = sendId;
+    if(rating) payload.rating = rating;
+    if(appState.currentUser) {
+      payload.user_id = appState.currentUser.id;
+    } else if(sendId) {
+      // Customer visit — get owner's user_id from send record
+      var r = await sb.from('sends').select('user_id').eq('id',sendId).single();
+      if(r.data && r.data.user_id) payload.user_id = r.data.user_id;
+    }
+    if(payload.user_id) {
+      await sb.from('events').insert(payload);
+    }
+  } catch(e) {}
+}
+
+// ═══ CURSOR ═══
+var cur=document.getElementById('cur'), curR=document.getElementById('curR');
+var mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';}});
+(function tick(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;if(curR){curR.style.left=rx+'px';curR.style.top=ry+'px';}requestAnimationFrame(tick);})();
+
+// ═══ SCREENS ═══
+function showScreen(id) {
+  var allOverlays = ['screen-auth','screen-dashboard','screen-payment','screen-funnel','screen-feedback','screen-thanks','screen-customer-funnel'];
+  
+  if(id === 'screen-landing') {
+    // Hide all overlays, show landing (which is always in DOM)
+    allOverlays.forEach(function(sid){
+      var el=document.getElementById(sid);
+      if(el){el.style.display='none';el.classList.remove('active');}
+    });
+    var landing=document.getElementById('screen-landing');
+    if(landing) landing.style.display='block';
+  } else {
+    // Hide landing, show target overlay
+    var landing=document.getElementById('screen-landing');
+    if(landing) landing.style.display='none';
+    allOverlays.forEach(function(sid){
+      var el=document.getElementById(sid);
+      if(el){el.style.display='none';el.classList.remove('active');}
+    });
+    var target=document.getElementById(id);
+    if(target){
+      target.style.display = (id==='screen-dashboard') ? 'flex' : 'flex';
+      target.classList.add('active');
+    }
+  }
+  window.scrollTo(0,0);
+}
+
+function showLanding(){
+  showScreen('screen-landing');
+  // Re-observe fade-up elements that may have been hidden
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(function(el){obs.observe(el);});
+}
+function scrollToSection(id){
+  var isLanding = document.getElementById('screen-landing').style.display !== 'none';
+  if(!isLanding){
+    showScreen('screen-landing');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    },80);
+  } else {
+    var el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+}
+function showAuth(tab){showScreen('screen-auth');switchAuthTab(tab);}
+function showFunnel(){
+  showScreen('screen-funnel');
+  var bn=document.getElementById('funnel-biz-name');
+  if(bn) bn.textContent=appState.bizName||'My Business';
+  appState.selectedStar=0;
+  // Reset demo stars
+  var starBtns=document.querySelectorAll('#demo-star-row .star-btn');
+  starBtns.forEach(function(s){s.style.opacity='1';s.style.transform='scale(1)';});
+  var dl=document.getElementById('demo-star-label');
+  if(dl) dl.textContent='Tap a star to see the magic ✨';
+  var pl=document.getElementById('path-low');
+  if(pl){pl.style.border='1px solid rgba(255,255,255,.1)';pl.style.background='rgba(255,255,255,.05)';}
+  var ph=document.getElementById('path-high');
+  if(ph){ph.style.border='1px solid rgba(255,255,255,.1)';ph.style.background='rgba(255,255,255,.05)';}
+}
+function goToDashboard(){
+  showScreen('screen-dashboard');
+  updateDashboard();
+  
+}
+function switchAuthTab(tab){
+  document.getElementById('tab-login').classList.toggle('active',tab==='login');
+  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
+  document.getElementById('form-login').style.display=tab==='login'?'flex':'none';
+  document.getElementById('form-signup').style.display=tab==='signup'?'flex':'none';
+  document.querySelectorAll('.form-group.has-error').forEach(function(g){g.classList.remove('has-error');});
+  document.querySelectorAll('.auth-error-banner').forEach(function(b){b.style.display='none';});
+}
+function clearFieldError(id){var el=document.getElementById(id);if(el)el.classList.remove('has-error');}
+function setFieldError(id,msg){var el=document.getElementById(id);if(!el)return;el.classList.add('has-error');if(msg){var m=el.querySelector('.field-error');if(m)m.textContent=msg;}}
+function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());}
+
+// ═══ SCROLL REVEAL ═══
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function toggleFaq(el){var was=el.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(f){f.classList.remove('open');});if(!was)el.classList.add('open');}
+window.addEventListener('scroll',function(){var nav=document.getElementById('main-nav');if(nav)nav.style.background=window.scrollY>50?'rgba(8,12,8,0.98)':'rgba(8,12,8,0.85)';});
+
+// ═══ DASHBOARD ═══
+function switchPanel(name){
+  document.querySelectorAll('.dash-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(i){i.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  var map={overview:0,send:1,inbox:2,customers:3,settings:5};
+  var items=document.querySelectorAll('.sb-item');
+  if(items[map[name]])items[map[name]].classList.add('active');
+  if(name==='overview')animateStats();
+  var main=document.querySelector('.dash-main');if(main)main.scrollTo({top:0,behavior:'smooth'});
+}
+function updateBnActive(activeId){
+  document.querySelectorAll('.dash-bn-item').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById(activeId);if(el)el.classList.add('active');
+}
+function animateStats(){
+  animateNum('stat-sent',appState.stats.sent);animateNum('stat-opened',appState.stats.opened);
+  animateNum('stat-reviews',appState.stats.reviews);animateNum('stat-feedback',appState.stats.feedback);
+  setTimeout(function(){
+    var s=appState.stats;
+    setConv(s.sent?Math.round(s.opened/s.sent*100):0,s.opened?Math.round((s.reviews+s.feedback)/s.opened*100):0,s.reviews+s.feedback?Math.round(s.reviews/(s.reviews+s.feedback)*100):0);
+  },200);
+}
+function animateNum(id,target){
+  var el=document.getElementById(id);if(!el)return;
+  var dur=800,startTime=null;
+  function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/dur,1);el.textContent=Math.round(p*target);if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+function setConv(c1,c2,c3){
+  ['conv1','conv2','conv3'].forEach(function(id,i){var v=[c1,c2,c3][i];document.getElementById(id).textContent=v+'%';document.getElementById(id+'-bar').style.width=v+'%';});
+}
+function updateDashboard(){
+  document.getElementById('sb-user-name').textContent=appState.bizName;
+  var initials=appState.bizName.split(' ').map(function(w){return w[0];}).slice(0,2).join('').toUpperCase();
+  document.getElementById('sb-avatar-text').textContent=initials;
+  var emailEl=document.getElementById('sb-user-email');
+  if(emailEl&&appState.currentUser)emailEl.textContent=appState.currentUser.email||'';
+  renderTables();animateStats();
+  setTimeout(function(){
+    var gl=document.getElementById('google-review-link');if(gl&&appState.googleLink)gl.value=appState.googleLink;
+    var sb2=document.getElementById('settings-biz');if(sb2)sb2.value=appState.bizName;
+    var sg=document.getElementById('settings-google-link');if(sg&&appState.googleLink)sg.value=appState.googleLink;
+    var mt=document.getElementById('msg-template');if(mt&&appState.messageTemplate)mt.value=appState.messageTemplate;
+    updatePreview();
+  },50);
+}
+function renderTables(){
+  var at=document.getElementById('activity-table');
+  if(at){
+    if(!appState.sends||appState.sends.length===0){at.innerHTML='<tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:2rem">No messages sent yet. <a href="#" onclick="switchPanel(\'send\');return false" style="color:#15803d">Send your first one →</a></td></tr>';}
+    else{at.innerHTML=appState.sends.slice().reverse().map(function(s){var sc=s.status==='Reviewed'?'reviewed':s.status==='Opened'?'opened':s.status==='Feedback'?'feedback':'sent';return '<tr><td style="font-weight:500;">'+s.name+'</td><td style="color:#6b7280;">'+s.phone+'</td><td style="color:#6b7280;">'+s.time+'</td><td><span class="badge '+sc+'">'+s.status+'</span></td></tr>';}).join('');}
+  }
+  var st=document.getElementById('send-table');
+  if(st){
+    if(!appState.sends||appState.sends.length===0){st.innerHTML='<tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:1.5rem">No messages sent yet.</td></tr>';}
+    else{st.innerHTML=appState.sends.slice().reverse().map(function(s){var sc=s.status==='Reviewed'?'reviewed':s.status==='Opened'?'opened':s.status==='Feedback'?'feedback':'sent';return '<tr><td style="font-weight:500;">'+s.name+'</td><td style="color:#6b7280;">'+s.phone+'</td><td style="color:#6b7280;">'+s.time+'</td><td><span class="badge '+sc+'">'+s.status+'</span></td></tr>';}).join('');}
+  }
+  var ct=document.getElementById('customers-table');
+  if(ct){
+    if(!appState.customers||appState.customers.length===0){ct.innerHTML='<tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:2rem">No customers yet.</td></tr>';}
+    else{ct.innerHTML=appState.customers.slice().reverse().map(function(c){return '<tr><td style="font-weight:500;">'+c.name+'</td><td style="color:#6b7280;">'+c.phone+'</td><td>1</td><td style="color:#6b7280;">'+c.time+'</td></tr>';}).join('');}
+  }
+}
+
+// ═══ CSV BULK SEND ═══
+var _csvContacts = [];
+
+function parseCSV(text) {
+  var lines = text.trim().split('\n');
+  if(lines.length < 2) return [];
+  var headers = lines[0].toLowerCase().split(',').map(function(h){return h.trim().replace(/"/g,'');});
+  var nameIdx = headers.indexOf('name'); var phoneIdx = headers.indexOf('phone');
+  if(nameIdx<0||phoneIdx<0) return null; // invalid
+  return lines.slice(1).map(function(line){
+    var cols = line.split(',').map(function(c){return c.trim().replace(/"/g,'');});
+    return {name:cols[nameIdx]||'', phone:cols[phoneIdx]||''};
+  }).filter(function(c){return c.name&&c.phone;});
+}
+
+function handleCSVDrop(e) {
+  e.preventDefault();
+  document.getElementById('csv-drop-zone').style.borderColor='#e8ecf0';
+  var file = e.dataTransfer.files[0];
+  if(file) processCSVFile(file);
+}
+
+function handleCSVFile(input) {
+  if(input.files[0]) processCSVFile(input.files[0]);
+}
+
+function processCSVFile(file) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contacts = parseCSV(e.target.result);
+    if(!contacts) { showToast('CSV must have "name" and "phone" columns'); return; }
+    if(contacts.length === 0) { showToast('No valid contacts found in CSV'); return; }
+    _csvContacts = contacts;
+    var title = document.getElementById('csv-preview-title');
+    var tbody = document.getElementById('csv-preview-table');
+    var preview = document.getElementById('csv-preview');
+    var btn = document.getElementById('csv-send-btn');
+    if(title) title.textContent = contacts.length + ' contacts loaded — ready to send';
+    if(btn) btn.textContent = '💬 Send WhatsApp to ' + contacts.length + ' contacts →';
+    if(tbody) tbody.innerHTML = contacts.slice(0,20).map(function(c){
+      return '<tr><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;font-weight:500;">'+c.name+'</td><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;color:#6b7280;">'+c.phone+'</td><td style="padding:.45rem .75rem;border-bottom:1px solid #f5f5f5;"><span style="background:#f0f0f0;color:#6b7280;font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;">Pending</span></td></tr>';
+    }).join('') + (contacts.length>20 ? '<tr><td colspan="3" style="padding:.5rem .75rem;color:#9ca3af;font-size:.75rem;">...and '+(contacts.length-20)+' more</td></tr>' : '');
+    if(preview) preview.style.display = 'block';
+  };
+  reader.readAsText(file);
+}
+
+function sendCSVBatch() {
+  if(!_csvContacts||!_csvContacts.length) return;
+  var progress = document.getElementById('csv-progress');
+  var btn = document.getElementById('csv-send-btn');
+  var tbody = document.getElementById('csv-preview-table');
+  if(btn) btn.style.display = 'none';
+
+  var i = 0;
+  var template = (document.getElementById('msg-template')||{}).value || appState.messageTemplate;
+
+  function sendNext() {
+    if(i >= _csvContacts.length) {
+      if(progress) progress.innerHTML = '<div style="background:#f0fdf4;border:1px solid #d1fae5;border-radius:8px;padding:.75rem 1rem;font-size:.82rem;color:#15803d;font-weight:600;">✅ All '+_csvContacts.length+' WhatsApp messages opened! Check each tab and hit Send.</div>';
+      renderTables(); animateStats();
+      return;
+    }
+    var c = _csvContacts[i];
+    var phone = c.phone.replace(/\D/g,'');
+    if(phone) {
+      var reviewLink='https://reviewboost.in/?review=true&biz='+encodeURIComponent(appState.bizName);
+      if(appState.googleLink) reviewLink+='&gl='+encodeURIComponent(appState.googleLink);
+      var msg = template.replace(/{name}/g,c.name).replace(/{business}/g,appState.bizName).replace(/{review_link}/g,reviewLink);
+      window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+      var now=new Date();
+      var ts=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0')+', '+now.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      appState.sends.push({id:'local_'+Date.now()+'_'+i,name:c.name,phone:phone,time:ts,status:'Sent',rating:0});
+      appState.customers.push({name:c.name,phone:phone,time:ts});
+      appState.stats.sent++;
+    }
+    if(progress) progress.innerHTML = '<div style="background:#f5f7fa;border-radius:8px;padding:.6rem 1rem;font-size:.8rem;color:#6b7280;">Opening '+(i+1)+' of '+_csvContacts.length+' — <strong>'+c.name+'</strong></div>';
+    i++;
+    setTimeout(sendNext, 800);
+  }
+  saveState();
+  sendNext();
+}
+
+function downloadCSVTemplate() {
+  var csv = 'name,phone\nPriya Sharma,+919876543210\nRahul Verma,+919123456789';
+  var blob = new Blob([csv], {type:'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href=url; a.download='contacts-template.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function exportCSV() {
+  if(!appState.sends||!appState.sends.length){showToast('No sends to export');return;}
+  var rows = ['Name,Phone,Sent At,Status'];
+  appState.sends.forEach(function(s){rows.push('"'+s.name+'","'+s.phone+'","'+s.time+'","'+s.status+'"');});
+  var blob = new Blob([rows.join('\n')],{type:'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href=url; a.download='reviewboost-sends.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ═══ WHATSAPP SEND ═══
+async function sendWhatsApp(){
+  var name=document.getElementById('cust-name').value.trim();
+  var rawPhone=document.getElementById('cust-phone').value.trim();
+  var phone=rawPhone.replace(/\D/g,'');
+  if(!name){showToast('Please enter the customer name');document.getElementById('cust-name').focus();return;}
+  if(!rawPhone||phone.length<7){showToast('Please enter a valid WhatsApp number with country code');document.getElementById('cust-phone').focus();return;}
+
+  var sendId=null;
+  if(sb&&appState.currentUser){
+    var r=await sb.from('sends').insert({user_id:appState.currentUser.id,customer_name:name,customer_phone:phone,status:'Sent'}).select().single();
+    if(r.data)sendId=r.data.id;
+  }
+
+  var reviewLink='https://reviewboost.in/?review=true';
+  if(sendId)reviewLink+='&sid='+sendId;
+  reviewLink+='&biz='+encodeURIComponent(appState.bizName);
+  // Embed google link directly in URL so customer device never needs to fetch it
+  if(appState.googleLink) reviewLink+='&gl='+encodeURIComponent(appState.googleLink);
+
+  var template=document.getElementById('msg-template').value||appState.messageTemplate;
+  var msg=template.replace(/{name}/g,name).replace(/{business}/g,appState.bizName).replace(/{review_link}/g,reviewLink);
+  var waUrl='https://wa.me/'+phone+'?text='+encodeURIComponent(msg);
+  var a=document.createElement('a');a.href=waUrl;a.target='_blank';a.rel='noopener';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+
+  var fb=document.getElementById('wa-fallback');
+  if(fb){fb.innerHTML='WhatsApp not opening? <a href="'+waUrl+'" target="_blank" style="color:#15803d;font-weight:600;text-decoration:underline;">Click here</a>';fb.style.display='block';}
+
+  var now=new Date();
+  var ts=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0')+', '+now.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+  appState.sends.push({id:sendId||'local_'+Date.now(),name:name,phone:phone,time:ts,status:'Sent',rating:0});
+  appState.customers.push({name:name,phone:phone,time:ts});
+  appState.stats.sent++;
+  saveState();renderTables();animateStats();
+  document.getElementById('cust-name').value='';document.getElementById('cust-phone').value='';
+  updatePreview();
+  showToast('WhatsApp opened! Hit send on your phone.');
+}
+
+function testWhatsApp(){
+  var rawPhone=document.getElementById('cust-phone').value.trim();
+  var phone=rawPhone.replace(/\D/g,'');
+  var name=document.getElementById('cust-name').value.trim()||'Test Customer';
+  if(!phone||phone.length<7){showToast('Enter a phone number first');return;}
+  var reviewLink='https://reviewboost.in/?review=true&biz='+encodeURIComponent(appState.bizName);
+  var template=document.getElementById('msg-template')?document.getElementById('msg-template').value:appState.messageTemplate;
+  var msg=template.replace(/{name}/g,name).replace(/{business}/g,appState.bizName).replace(/{review_link}/g,reviewLink);
+  var waUrl='https://wa.me/'+phone+'?text='+encodeURIComponent(msg);
+  var a=document.createElement('a');a.href=waUrl;a.target='_blank';a.rel='noopener';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+function getGoogleLinkChangeCount() {
+  try { return parseInt(localStorage.getItem('rbp_gl_changes')||'0'); } catch(e){ return 0; }
+}
+function incrementGoogleLinkChangeCount() {
+  try { localStorage.setItem('rbp_gl_changes', (getGoogleLinkChangeCount()+1).toString()); } catch(e){}
+}
+function onGoogleLinkInput() {
+  var count = getGoogleLinkChangeCount();
+  var limitMsg = document.getElementById('google-link-limit-msg');
+  var input = document.getElementById('google-review-link');
+  if(count >= 5) {
+    if(limitMsg) limitMsg.style.display = 'block';
+    // Restore last saved value
+    input.value = appState.googleLink || '';
+    return;
+  }
+  if(limitMsg) limitMsg.style.display = 'none';
+  appState.googleLink = input.value.trim();
+}
+
+function updatePreview(){
+  var name=document.getElementById('cust-name')?document.getElementById('cust-name').value||'Customer':'Customer';
+  var template=document.getElementById('msg-template')?document.getElementById('msg-template').value:appState.messageTemplate;
+  var reviewLink='reviewboost.in';
+  var msg=template.replace(/{name}/g,'<em>'+name+'</em>').replace(/{business}/g,'<strong>'+appState.bizName+'</strong>').replace(/{review_link}/g,'<span class="wa-link">'+reviewLink+'</span>');
+  var el=document.getElementById('wa-msg-preview');if(el)el.innerHTML=msg.replace(/\n/g,'<br>');
+}
+
+async function saveTemplate(){
+  var t=document.getElementById('msg-template');var g=document.getElementById('google-review-link');
+  if(t) appState.messageTemplate=t.value;
+  if(g) {
+    var newLink = g.value.trim();
+    if(newLink && newLink !== appState.googleLink) {
+      var count = getGoogleLinkChangeCount();
+      if(count >= 5) {
+        showToast('Google link change limit reached. Contact support.');
+        g.value = appState.googleLink || '';
+        return;
+      }
+      incrementGoogleLinkChangeCount();
+      appState.googleLink = newLink;
+      var remaining = 4 - count;
+      if(remaining <= 2) showToast('Google link saved. ' + remaining + ' change' + (remaining===1?'':'s') + ' remaining.');
+      else showToast('Template saved!');
+    } else {
+      showToast('Template saved!');
+    }
+  } else {
+    showToast('Template saved!');
+  }
+  saveState();await saveProfileToSupabase();
+}
+
+async function saveSettings(){
+  var b=document.getElementById('settings-biz');var g=document.getElementById('settings-google-link');
+  if(b&&b.value)appState.bizName=b.value;if(g&&g.value)appState.googleLink=g.value.trim();
+  saveState();await saveProfileToSupabase();updateDashboard();showToast('Settings saved!');
+}
+
+// ═══ REVIEW FUNNEL ═══
+// Promise that resolves when google link is fetched
+var _googleLinkReady = null;
+
+function prefetchGoogleLink(sendId) {
+  _googleLinkReady = new Promise(function(resolve) {
+    function tryFetch() {
+      if(!sb) { setTimeout(tryFetch, 200); return; }
+      if(!sendId) { resolve(); return; }
+      sb.from('sends').select('user_id').eq('id', sendId).single().then(function(r) {
+        if(!r.data) { resolve(); return; }
+        sb.from('profiles').select('google_review_url').eq('id', r.data.user_id).single().then(function(pr) {
+          if(pr.data && pr.data.google_review_url) {
+            appState.googleLink = pr.data.google_review_url.trim();
+          }
+          resolve();
+        }).catch(resolve);
+      }).catch(resolve);
+    }
+    tryFetch();
+  });
+}
+
+function selectStar(n){
+  appState.selectedStar=n;
+  document.querySelectorAll('.star-btn').forEach(function(s,i){s.classList.toggle('active',i<n);});
+  var labels=['','Terrible','Poor','Okay','Good','Excellent!'];
+  document.getElementById('star-label').textContent=labels[n];
+  var hint=document.getElementById('star-hint');
+  if(hint){
+    if(n>=4){hint.textContent='Taking you to Google...';hint.style.color='rgba(74,222,128,.8)';}
+    else{hint.textContent='We value your feedback and will use it to improve';hint.style.color='rgba(255,200,100,.8)';}
+  }
+  var btn=document.getElementById('funnel-btn');
+  if(btn){
+    if(n>=4){btn.classList.add('disabled');btn.style.display='none';}
+    else{btn.classList.remove('disabled');btn.style.display='block';}
+  }
+  if(n>=4){
+    trackEvent('rated',appState.currentSendId,n);
+    trackEvent('google_redirect',appState.currentSendId,n);
+    // Wait for google link fetch to finish then redirect
+    var doRedirect = function() {
+      var googleLink = (appState.googleLink||'').trim();
+      var isReal = googleLink && googleLink !== 'https://g.page/your-business/review' && googleLink.indexOf('http')===0 && googleLink.length>15;
+      if(isReal) {
+        window.location.replace(googleLink);
+      } else {
+        showScreen('screen-thanks');
+        document.getElementById('thanks-msg').textContent='Thank you for your positive rating! We appreciate your time.';
+      }
+    };
+    if(_googleLinkReady) {
+      _googleLinkReady.then(doRedirect);
+    } else {
+      doRedirect();
+    }
+  }
+}
+
+
+async function submitRating(){
+  // Only handles 1-3 stars (Continue button) — 4-5 stars handled by doGoogleRedirect()
+  var n=appState.selectedStar;if(!n||n>=4)return;
+  await trackEvent('rated',appState.currentSendId,n);
+  showScreen('screen-feedback');
+}
+
+async function submitFeedback(){
+  var text=document.getElementById('feedback-text').value.trim();
+  var tags=[];
+  document.querySelectorAll('#feedback-tags .tag-btn.active').forEach(function(t){tags.push(t.textContent.trim());});
+  await trackEvent('feedback_submitted',appState.currentSendId,appState.selectedStar);
+  if(sb){
+    try{
+      var payload={rating:appState.selectedStar,tags:tags,message:text||'No additional comments.'};
+      if(appState.currentSendId){
+        payload.send_id=appState.currentSendId;
+        var r=await sb.from('sends').select('user_id').eq('id',appState.currentSendId).single();
+        if(r.data){payload.user_id=r.data.user_id;await sb.from('sends').update({status:'Reviewed',rating:appState.selectedStar}).eq('id',appState.currentSendId);}
+      }
+      await sb.from('feedback').insert(payload);
+    }catch(e){console.log('feedback err',e);}
+  }
+  document.getElementById('thanks-msg').textContent='Thank you for sharing! We will use this to improve your experience.';
+  showScreen('screen-thanks');
+  // Clear URL so refresh doesn't restart the funnel
+}
+
+function toggleTag(el){el.classList.toggle('active');}
+
+// ═══ HOW IT WORKS STEPPER ═══
+var _howStep = 0;
+var _howTotal = 4;
+var _howTimer = null;
+
+function goStep(n) {
+  // Hide current
+  var cur = document.getElementById('slide-' + _howStep);
+  if(cur) { cur.style.display = 'none'; cur.classList.remove('active'); }
+  _howStep = n;
+  // Show new
+  var next = document.getElementById('slide-' + _howStep);
+  if(next) { next.style.display = 'flex'; next.classList.add('active'); }
+  // Update dots
+  document.querySelectorAll('.how-step-dot').forEach(function(d, i) {
+    d.style.background = i <= _howStep ? 'var(--green)' : 'rgba(255,255,255,.1)';
+    var label = d.querySelector('div');
+    if(label) label.style.color = i <= _howStep ? 'var(--green)' : 'var(--dim)';
+  });
+  // Update counter
+  var counter = document.getElementById('how-counter');
+  if(counter) counter.textContent = 'Step ' + (_howStep+1) + ' of ' + _howTotal;
+  // Update buttons
+  var prev = document.getElementById('how-prev');
+  var nxt = document.getElementById('how-next');
+  if(prev) {
+    prev.disabled = _howStep === 0;
+    prev.style.opacity = _howStep === 0 ? '.4' : '1';
+    prev.style.cursor = _howStep === 0 ? 'not-allowed' : 'pointer';
+  }
+  if(nxt) {
+    if(_howStep === _howTotal - 1) {
+      nxt.textContent = 'Start free trial →';
+      nxt.onclick = function(){ showAuth('signup'); };
+      nxt.style.background = 'var(--green)';
+    } else {
+      nxt.textContent = 'Next →';
+      nxt.onclick = nextStep;
+    }
+  }
+  // Reset auto-play timer
+  clearInterval(_howTimer);
+  _howTimer = setInterval(function() {
+    if(_howStep < _howTotal - 1) nextStep();
+    else clearInterval(_howTimer);
+  }, 4000);
+}
+
+function nextStep() { if(_howStep < _howTotal-1) goStep(_howStep+1); }
+function prevStep() { if(_howStep > 0) goStep(_howStep-1); }
+
+// Auto-play when section is visible
+var _howObs = new IntersectionObserver(function(entries) {
+  if(entries[0].isIntersecting && _howStep === 0) {
+    clearInterval(_howTimer);
+    _howTimer = setInterval(function() {
+      if(_howStep < _howTotal - 1) nextStep();
+      else clearInterval(_howTimer);
+    }, 4000);
+  } else {
+    clearInterval(_howTimer);
+  }
+}, { threshold: 0.3 });
+document.addEventListener('DOMContentLoaded', function() {
+  var howSec = document.getElementById('how');
+  if(howSec) _howObs.observe(howSec);
+});
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+</script>
+
+</body>
+</html>
