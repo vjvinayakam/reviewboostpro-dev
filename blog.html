@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EG69HH90M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7EG69HH90M');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — ReviewBoostPRO | Google Reviews Tips for Indian Businesses</title>
+<meta name="description" content="Tips, guides and strategies to help Indian businesses and clinics get more Google reviews, rank higher on Google Maps, and grow with WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.back-link{display:flex;align-items:center;gap:.4rem;font-size:.83rem;font-weight:600;color:#6b7280;text-decoration:none;transition:color .2s;}
+.back-link:hover{color:#16a34a;}
+.nav-cta{background:#22c55e;color:#fff;border:none;border-radius:10px;padding:.55rem 1.2rem;font-size:.85rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+/* HERO */
+.blog-hero{padding:7rem 1.5rem 4rem;max-width:860px;margin:0 auto;text-align:center;}
+.blog-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#111;margin-bottom:.75rem;line-height:1.15;}
+.blog-hero h1 span{color:#16a34a;}
+.blog-hero p{font-size:1rem;color:#6b7280;max-width:500px;margin:0 auto;}
+
+/* FEATURED POST */
+.featured-wrap{max-width:860px;margin:0 auto;padding:0 1.5rem 3rem;}
+.featured-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#16a34a;margin-bottom:1rem;display:block;}
+.featured-card{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:20px;padding:2.5rem;text-decoration:none;transition:box-shadow .2s,transform .2s;}
+.featured-card:hover{box-shadow:0 8px 32px rgba(22,163,74,.15);transform:translateY(-3px);}
+.featured-tag{display:inline-flex;align-items:center;gap:.4rem;background:#dcfce7;border:1px solid #bbf7d0;border-radius:100px;padding:.25rem .8rem;font-size:.7rem;font-weight:700;color:#16a34a;letter-spacing:.04em;margin-bottom:1rem;}
+.featured-card h2{font-family:'Lora',serif;font-size:1.5rem;font-weight:600;color:#111;line-height:1.3;margin-bottom:.75rem;}
+.featured-card p{font-size:.88rem;color:#6b7280;line-height:1.7;margin-bottom:1.25rem;}
+.featured-meta{display:flex;align-items:center;gap:.75rem;font-size:.78rem;color:#9ca3af;}
+.featured-visual{background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1rem;}
+.feat-stat{background:rgba(255,255,255,.15);border-radius:10px;padding:.85rem 1.25rem;text-align:center;}
+.feat-stat-num{font-size:2rem;font-weight:900;color:#fff;line-height:1;}
+.feat-stat-label{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:.2rem;}
+.read-btn{display:inline-flex;align-items:center;gap:.4rem;background:#16a34a;color:#fff;border-radius:10px;padding:.6rem 1.25rem;font-size:.85rem;font-weight:700;text-decoration:none;}
+
+/* ALL POSTS GRID */
+.posts-section{max-width:860px;margin:0 auto;padding:0 1.5rem 5rem;}
+.posts-section h2{font-size:1.1rem;font-weight:800;color:#111;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid #f0f0f0;}
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+.post-card{background:#fff;border:1px solid #e8e8e8;border-radius:16px;padding:1.5rem;text-decoration:none;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;}
+.post-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);}
+.post-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#16a34a;margin-bottom:.6rem;}
+.post-card h3{font-size:1rem;font-weight:700;color:#111;line-height:1.4;margin-bottom:.5rem;flex:1;}
+.post-card p{font-size:.8rem;color:#9ca3af;line-height:1.6;margin-bottom:1rem;}
+.post-footer{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:#9ca3af;border-top:1px solid #f5f5f5;padding-top:.75rem;margin-top:auto;}
+.post-read{color:#16a34a;font-weight:700;font-size:.78rem;}
+
+/* COMING SOON CARD */
+.post-card-soon{opacity:.55;cursor:default;}
+.post-card-soon:hover{box-shadow:none;transform:none;}
+.soon-badge{background:#f5f5f5;color:#9ca3af;font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;margin-left:.4rem;}
+
+/* CTA */
+.cta-strip{background:#0f172a;padding:4rem 1.5rem;text-align:center;}
+.cta-strip h2{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:.5rem;}
+.cta-strip p{color:rgba(255,255,255,.55);font-size:.9rem;margin-bottom:1.5rem;}
+.cta-strip button{background:#22c55e;color:#fff;border:none;border-radius:12px;padding:1rem 2.5rem;font-size:.95rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.cta-strip .sub{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:.75rem;}
+
+footer{background:#fff;border-top:1px solid #f0f0f0;padding:2rem 1.5rem;text-align:center;}
+footer p{font-size:.78rem;color:#9ca3af;}
+footer a{color:#16a34a;text-decoration:none;font-weight:600;}
+
+@media(max-width:700px){
+  .featured-card{grid-template-columns:1fr;}
+  .featured-visual{display:none;}
+  .posts-grid{grid-template-columns:1fr;}
+  nav{padding:.75rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to home
+  </a>
+  <a href="index.html" style="text-decoration:none;">
+    <div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;">
+      <div style="background:#16a34a;padding:8px 14px;display:flex;align-items:center;gap:7px;">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#fff;">Review</span>
+      </div>
+      <div style="background:#fff;padding:8px 14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:13px;color:#0f172a;">Boost</span>
+        <div style="background:#16a34a;color:#fff;font-family:'DM Sans',sans-serif;font-size:7px;font-weight:900;letter-spacing:.1em;padding:2px 6px;border-radius:4px;">PRO</div>
+      </div>
+    </div>
+  </a>
+  <button class="nav-cta" onclick="window.location.href='index.html'">Free trial →</button>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <h1>The <span>ReviewBoost</span> Blog</h1>
+  <p>Practical guides to help Indian businesses and clinics get more Google reviews, rank higher on Maps, and grow their reputation.</p>
+</div>
+
+<!-- FEATURED POST -->
+<div class="featured-wrap">
+  <span class="featured-label">⭐ Latest Post</span>
+  <a href="blog-whatsapp-google-reviews-clinic-india.html" class="featured-card">
+    <div>
+      <div class="featured-tag">🏥 Google Reviews for Clinics</div>
+      <h2>How to Get Google Reviews via WhatsApp for Your Clinic in India</h2>
+      <p>Step-by-step guide for doctors and clinic owners. Includes 3 WhatsApp templates, timing tips by clinic type, and the smart routing system that prevents bad reviews from going public.</p>
+      <div class="featured-meta">
+        <span>April 2026</span>
+        <span>·</span>
+        <span>7 min read</span>
+        <span>·</span>
+        <span style="color:#16a34a;font-weight:700;">Read now →</span>
+      </div>
+    </div>
+    <div class="featured-visual">
+      <div class="feat-stat">
+        <div class="feat-stat-num">68%</div>
+        <div class="feat-stat-label">WhatsApp open rate</div>
+      </div>
+      <div class="feat-stat">
+        <div class="feat-stat-num">3×</div>
+        <div class="feat-stat-label">More reviews in 60 days</div>
+      </div>
+      <div class="feat-stat">
+        <div class="feat-stat-num">84%</div>
+        <div class="feat-stat-label">Patients trust reviews</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- ALL POSTS -->
+<div class="posts-section">
+  <h2>All Articles</h2>
+  <div class="posts-grid">
+
+    <!-- Post 1 -->
+    <a href="blog-whatsapp-google-reviews-clinic-india.html" class="post-card">
+      <div class="post-tag">🏥 Clinics & Doctors</div>
+      <h3>How to Get Google Reviews via WhatsApp for Your Clinic in India</h3>
+      <p>3 WhatsApp templates, timing guide, and the smart routing system for clinics.</p>
+      <div class="post-footer">
+        <span>April 2026 · 7 min</span>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <!-- Post 2 -->
+    <a href="blog-how-to-get-google-reviews.html" class="post-card">
+      <div class="post-tag">⭐ Google Reviews</div>
+      <h3>How Indian Businesses Get 3× More Google Reviews Using WhatsApp</h3>
+      <p>The proven WhatsApp strategy any local Indian business can set up in 10 minutes.</p>
+      <div class="post-footer">
+        <span>April 2026 · 8 min</span>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <!-- Coming soon posts -->
+    <div class="post-card post-card-soon">
+      <div class="post-tag">🗺️ Google Maps <span class="soon-badge">Coming soon</span></div>
+      <h3>Why Your Clinic Doesn't Show Up on Google Maps — And How to Fix It</h3>
+      <p>The most common reasons clinics are invisible on Maps and the exact fixes.</p>
+      <div class="post-footer">
+        <span>Coming soon</span>
+      </div>
+    </div>
+
+    <div class="post-card post-card-soon">
+      <div class="post-tag">🛡️ Reputation <span class="soon-badge">Coming soon</span></div>
+      <h3>How to Respond to Negative Google Reviews as a Doctor</h3>
+      <p>A bad review handled well can win more patients than a 5-star review.</p>
+      <div class="post-footer">
+        <span>Coming soon</span>
+      </div>
+    </div>
+
+    <div class="post-card post-card-soon">
+      <div class="post-tag">📊 Case Study <span class="soon-badge">Coming soon</span></div>
+      <h3>From 3.9 to 4.7 Stars: How a Chennai Dental Clinic Turned It Around</h3>
+      <p>A 60-day journey using the WhatsApp review method — with real numbers.</p>
+      <div class="post-footer">
+        <span>Coming soon</span>
+      </div>
+    </div>
+
+    <div class="post-card post-card-soon">
+      <div class="post-tag">🔢 Google Maps <span class="soon-badge">Coming soon</span></div>
+      <h3>How Many Google Reviews Does Your Clinic Need to Rank #1 Locally?</h3>
+      <p>The exact numbers based on real data from Indian clinics across 10 cities.</p>
+      <div class="post-footer">
+        <span>Coming soon</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to get more Google reviews?</h2>
+  <p>Join Indian businesses using ReviewBoostPRO to grow their reputation on autopilot.</p>
+  <button onclick="window.location.href='index.html'">Start free 14-day trial →</button>
+  <div class="sub">No credit card required · ₹499/month · Made for India</div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="index.html">ReviewBoostPRO</a> · Made in India 🇮🇳 · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+
+</body>
+</html>
