@@ -372,16 +372,91 @@ footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-conte
 <!-- NAV -->
 <nav id="main-nav-new">
   <div class="nav-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:10px 16px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div>
-    <ul class="nav-links">
+
+  <!-- Desktop nav links -->
+  <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="scrollToSection('steps');return false;">How it works</a></li>
     <li><a href="javascript:void(0)" onclick="scrollToSection('pricing-new');return false;">Pricing</a></li>
     <li><a href="javascript:void(0)" onclick="scrollToSection('faq-new');return false;">FAQ</a></li>
+    <li><a href="blog-how-to-get-google-reviews.html">Blog</a></li>
   </ul>
-  <div style="display:flex;gap:.6rem;align-items:center;">
+
+  <!-- Desktop buttons -->
+  <div class="nav-desktop-btns" style="display:flex;gap:.6rem;align-items:center;">
     <button class="btn-signin" onclick="showAuth('login')">Sign in</button>
     <button class="btn-cta-nav" onclick="showAuth('signup')">Free trial →</button>
   </div>
+
+  <!-- Mobile right: Sign in + Hamburger -->
+  <div class="nav-mobile-btns" style="display:none;align-items:center;gap:.5rem;">
+    <button class="btn-signin" onclick="showAuth('login')" style="font-size:.8rem;padding:.4rem .85rem;">Sign in</button>
+    <button id="nav-hamburger" onclick="toggleMobileMenu()" style="background:none;border:1.5px solid #e0e0e0;border-radius:8px;padding:.4rem .6rem;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;width:38px;height:38px;">
+      <span class="ham-line" style="display:block;width:18px;height:2px;background:#333;border-radius:2px;transition:all .2s;"></span>
+      <span class="ham-line" style="display:block;width:18px;height:2px;background:#333;border-radius:2px;transition:all .2s;"></span>
+      <span class="ham-line" style="display:block;width:18px;height:2px;background:#333;border-radius:2px;transition:all .2s;"></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile dropdown menu -->
+<div id="mobile-menu" style="display:none;position:fixed;top:63px;left:0;right:0;background:#fff;border-bottom:1px solid #f0f0f0;z-index:499;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:.5rem 0;">
+  <a href="javascript:void(0)" onclick="scrollToSection('steps');closeMobileMenu();return false;" class="mob-link">How it works</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('pricing-new');closeMobileMenu();return false;" class="mob-link">Pricing</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('faq-new');closeMobileMenu();return false;" class="mob-link">FAQ</a>
+  <a href="blog-how-to-get-google-reviews.html" class="mob-link">Blog <span style="font-size:.65rem;background:#f0fdf4;color:#16a34a;border:1px solid #d1fae5;border-radius:100px;padding:.15rem .5rem;font-weight:700;margin-left:.35rem;">New ✨</span></a>
+  <div style="border-top:1px solid #f5f5f5;margin:.5rem 1.25rem;"></div>
+  <div style="padding:.5rem 1.25rem 1rem;">
+    <button onclick="showAuth('signup');closeMobileMenu();" style="width:100%;padding:.85rem;background:#22c55e;border:none;border-radius:10px;font-size:.92rem;font-weight:700;color:#fff;cursor:pointer;">Start free trial →</button>
+  </div>
+</div>
+
+<style>
+  .mob-link{display:flex;align-items:center;padding:.75rem 1.25rem;font-size:.92rem;font-weight:500;color:#374151;text-decoration:none;transition:background .15s;}
+  .mob-link:hover{background:#f9fafb;}
+  @media(max-width:768px){
+    .nav-desktop-btns{display:none!important;}
+    .nav-mobile-btns{display:flex!important;}
+    .nav-links{display:none!important;}
+  }
+  @media(min-width:769px){
+    #mobile-menu{display:none!important;}
+  }
+</style>
+
+<script>
+function toggleMobileMenu(){
+  var m = document.getElementById('mobile-menu');
+  var open = m.style.display === 'block';
+  m.style.display = open ? 'none' : 'block';
+  // Animate hamburger
+  var lines = document.querySelectorAll('.ham-line');
+  if(!open){
+    lines[0].style.transform='rotate(45deg) translate(4px,4px)';
+    lines[1].style.opacity='0';
+    lines[2].style.transform='rotate(-45deg) translate(4px,-4px)';
+  } else {
+    lines[0].style.transform='none';
+    lines[1].style.opacity='1';
+    lines[2].style.transform='none';
+  }
+}
+function closeMobileMenu(){
+  var m = document.getElementById('mobile-menu');
+  m.style.display = 'none';
+  var lines = document.querySelectorAll('.ham-line');
+  lines[0].style.transform='none';
+  lines[1].style.opacity='1';
+  lines[2].style.transform='none';
+}
+// Close menu when clicking outside
+document.addEventListener('click', function(e){
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('nav-hamburger');
+  if(menu && menu.style.display==='block' && !menu.contains(e.target) && !btn.contains(e.target)){
+    closeMobileMenu();
+  }
+});
+</script>
 
 <!-- HERO -->
 <section class="hero" style="padding:7rem 1.5rem 4.5rem;background:#ffffff;text-align:center;">
