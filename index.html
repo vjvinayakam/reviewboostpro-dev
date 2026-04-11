@@ -376,7 +376,7 @@ footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-conte
   <!-- Desktop nav links -->
   <ul class="nav-links">
     <li><a href="javascript:void(0)" onclick="scrollToSection('steps');return false;">How it works</a></li>
-    <li><a href="javascript:void(0)" onclick="scrollToSection('pricing-new');return false;">Pricing</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
     <li><a href="javascript:void(0)" onclick="scrollToSection('faq-new');return false;">FAQ</a></li>
     <li><a href="blog.html">Blog</a></li>
   </ul>
@@ -401,7 +401,7 @@ footer{padding:2rem 5rem;border-top:1px solid #f0f0f0;display:flex;justify-conte
 <!-- Mobile dropdown menu -->
 <div id="mobile-menu" style="display:none;position:fixed;top:63px;left:0;right:0;background:#fff;border-bottom:1px solid #f0f0f0;z-index:499;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:.5rem 0;">
   <a href="javascript:void(0)" onclick="scrollToSection('steps');closeMobileMenu();return false;" class="mob-link">How it works</a>
-  <a href="javascript:void(0)" onclick="scrollToSection('pricing-new');closeMobileMenu();return false;" class="mob-link">Pricing</a>
+  <a href="pricing.html" onclick="closeMobileMenu();" class="mob-link">Pricing</a>
   <a href="javascript:void(0)" onclick="scrollToSection('faq-new');closeMobileMenu();return false;" class="mob-link">FAQ</a>
   <a href="blog.html" class="mob-link">Blog <span style="font-size:.65rem;background:#f0fdf4;color:#16a34a;border:1px solid #d1fae5;border-radius:100px;padding:.15rem .5rem;font-weight:700;margin-left:.35rem;">New ✨</span></a>
   <div style="border-top:1px solid #f5f5f5;margin:.5rem 1.25rem;"></div>
@@ -472,21 +472,129 @@ document.addEventListener('click', function(e){
     Turn every customer<br>into a <span style="color:#22c55e;">5-star</span> <span style="color:#bbb;font-style:italic;">Google review</span>
   </h1>
 
-  <!-- Flow pills — from uploaded design -->
-  <div class="fade-up" style="animation-delay:.1s;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;">
-    <div style="display:flex;align-items:center;gap:8px;background:#f0faf5;border:1.5px solid #5DCAA5;border-radius:999px;padding:10px 20px;">
-      <span style="font-size:18px;">💬</span>
-      <span style="font-size:15px;font-weight:600;color:#085041;">Send WhatsApp</span>
-    </div>
-    <span style="font-size:20px;color:#d1d5db;">→</span>
-    <div style="display:flex;align-items:center;gap:8px;background:#f0f4ff;border:1.5px solid #AFA9EC;border-radius:999px;padding:10px 20px;">
-      <span style="font-size:18px;">⭐</span>
-      <span style="font-size:15px;font-weight:600;color:#3C3489;">Happy → Google</span>
-    </div>
-    <span style="font-size:20px;color:#d1d5db;">→</span>
-    <div style="display:flex;align-items:center;gap:8px;background:#fff8ee;border:1.5px solid #EF9F27;border-radius:999px;padding:10px 20px;">
-      <span style="font-size:18px;">🔒</span>
-      <span style="font-size:15px;font-weight:600;color:#633806;">Unhappy → Private</span>
+  <!-- Flow diagram — designed graphic -->
+  <div class="fade-up" style="animation-delay:.1s;margin-bottom:2.5rem;width:100%;max-width:520px;margin-left:auto;margin-right:auto;">
+    <style>
+      .flow-scene{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;padding:32px 16px 28px;}
+      .flow-scene::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(34,197,94,.05) 1px,transparent 1px);background-size:24px 24px;border-radius:20px;pointer-events:none;}
+      .flow-top{position:relative;z-index:1;background:#064E3B;border-radius:56px;padding:12px 24px 12px 12px;display:flex;align-items:center;gap:11px;box-shadow:0 8px 28px rgba(6,78,59,.28),inset 0 1px 0 rgba(255,255,255,.07);}
+      .flow-wa{width:42px;height:42px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(37,211,102,.3);}
+      .flow-top-main{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.02em;}
+      .flow-top-sub{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-top:1px;}
+      .flow-fork{position:relative;z-index:1;width:100%;display:flex;align-items:flex-start;}
+      .flow-branch{flex:1;display:flex;flex-direction:column;align-items:center;}
+      .flow-vline{width:2px;border-radius:2px;}
+      .flow-hline{height:2px;width:100%;border-radius:2px;}
+      .flow-dot{width:8px;height:8px;border-radius:50%;background:#d1d5db;flex-shrink:0;}
+      .flow-tri{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;}
+      .flow-chip{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:100px;}
+      .flow-chip-g{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;}
+      .flow-chip-o{background:#ffedd5;color:#c2410c;border:1px solid #fed7aa;}
+      .flow-cards{position:relative;z-index:1;display:flex;gap:12px;width:100%;}
+      .flow-card{flex:1;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:transform .2s;}
+      .flow-card:hover{transform:translateY(-3px);}
+      .flow-card-g{background:#fff;border:1.5px solid #bbf7d0;box-shadow:0 4px 18px rgba(22,163,74,.08);}
+      .flow-card-o{background:#fff;border:1.5px solid #fed7aa;box-shadow:0 4px 18px rgba(234,88,12,.07);}
+      .flow-ci{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+      .flow-ci-g{background:#dcfce7;} .flow-ci-o{background:#ffedd5;}
+      .flow-ct{font-size:13px;font-weight:700;color:#111;letter-spacing:-.01em;}
+      .flow-cs{font-size:9px;letter-spacing:.05em;font-weight:700;}
+      .flow-cs-g{color:#16a34a;} .flow-cs-o{color:#ea580c;}
+      .flow-cd{font-size:11.5px;color:#6b7280;line-height:1.6;}
+      .flow-ob{display:flex;align-items:center;gap:7px;padding:9px 10px;border-radius:10px;}
+      .flow-ob-g{background:#f0fdf4;border:1px solid #bbf7d0;}
+      .flow-ob-o{background:#fff7ed;border:1px solid #fed7aa;}
+      .flow-oi{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+      .flow-oi-g{background:#16a34a;} .flow-oi-o{background:#ea580c;}
+      .flow-ot{font-size:11px;font-weight:700;color:#111;}
+      .flow-os{font-size:9.5px;color:#6b7280;margin-top:1px;}
+      .flow-result{position:relative;z-index:1;margin-top:16px;width:100%;display:flex;align-items:center;gap:9px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:11px 14px;}
+      .flow-ri{width:28px;height:28px;border-radius:8px;background:#16a34a;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+      .flow-rt{font-size:11.5px;color:#166534;line-height:1.55;}
+      @media(max-width:400px){.flow-cards{flex-direction:column;}}
+    </style>
+    <div class="flow-scene">
+
+      <div class="flow-top">
+        <div class="flow-wa">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4C7.63 4 4 7.63 4 12.05c0 1.42.37 2.8 1.07 4.02L4 20l4.05-1.06a8.02 8.02 0 003.98 1.02h.03c4.42 0 8.05-3.63 8.05-8.05 0-2.15-.84-4.17-2.51-5.59z" fill="#fff"/></svg>
+        </div>
+        <div>
+          <div class="flow-top-main">Send WhatsApp review request</div>
+          <div class="flow-top-sub">CUSTOMER RECEIVES YOUR LINK</div>
+        </div>
+      </div>
+
+      <div class="flow-fork">
+        <div class="flow-branch">
+          <div class="flow-vline" style="height:20px;background:linear-gradient(#064E3B,#bbf7d0);"></div>
+        </div>
+        <div class="flow-branch">
+          <div class="flow-vline" style="height:20px;background:linear-gradient(#064E3B,#d1d5db);"></div>
+          <div style="display:flex;align-items:center;width:100%;">
+            <div class="flow-hline" style="background:linear-gradient(to left,#d1d5db,transparent);"></div>
+            <div class="flow-dot"></div>
+            <div class="flow-hline" style="background:linear-gradient(to right,#d1d5db,transparent);"></div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+        <div class="flow-branch">
+          <div class="flow-vline" style="height:20px;background:linear-gradient(#064E3B,#fed7aa);"></div>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:1;display:flex;gap:12px;width:100%;margin-bottom:6px;">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="flow-tri" style="border-top:9px solid #16a34a;"></div>
+          <div class="flow-chip flow-chip-g">★★★★★ &nbsp;4–5 stars</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="flow-tri" style="border-top:9px solid #ea580c;"></div>
+          <div class="flow-chip flow-chip-o">★★★ &nbsp;1–3 stars</div>
+        </div>
+      </div>
+
+      <div class="flow-cards">
+        <div class="flow-card flow-card-g">
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div class="flow-ci flow-ci-g">
+              <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div>
+              <div class="flow-ct">Happy customer</div>
+              <div class="flow-cs flow-cs-g">GOES TO GOOGLE</div>
+            </div>
+          </div>
+          <div class="flow-cd">Taken to your Google listing to leave a public review.</div>
+          <div class="flow-ob flow-ob-g">
+            <div class="flow-oi flow-oi-g"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><div class="flow-ot">Public Google review</div><div class="flow-os">Boosts Maps ranking</div></div>
+          </div>
+        </div>
+
+        <div class="flow-card flow-card-o">
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div class="flow-ci flow-ci-o">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#ea580c" stroke-width="1.5"/><path d="M8.5 15.5c.8-1 2-1.5 3.5-1.5s2.7.5 3.5 1.5" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round"/><circle cx="9.5" cy="10" r="1" fill="#ea580c"/><circle cx="14.5" cy="10" r="1" fill="#ea580c"/></svg>
+            </div>
+            <div>
+              <div class="flow-ct">Unhappy customer</div>
+              <div class="flow-cs flow-cs-o">STAYS PRIVATE</div>
+            </div>
+          </div>
+          <div class="flow-cd">Sent to a private form. Fixed before it reaches Google.</div>
+          <div class="flow-ob flow-ob-o">
+            <div class="flow-oi flow-oi-o"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#fff" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><div class="flow-ot">Private feedback only</div><div class="flow-os">Never reaches Google</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-result">
+        <div class="flow-ri"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="flow-rt"><strong style="color:#14532d;">Your rating only ever goes up</strong> — unhappy customers give private feedback first.</div>
+      </div>
+
     </div>
   </div>
 
@@ -861,7 +969,7 @@ document.addEventListener('click', function(e){
   <div class="footer-logo"><div style="display:inline-flex;align-items:center;border-radius:50px;overflow:hidden;border:2px solid #16a34a;"><div style="background:#16a34a;padding:10px 16px;display:flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#ffffff;letter-spacing:-.2px;">Review</span></div><div style="background:#ffffff;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;color:#0f172a;letter-spacing:-.2px;">Boost</span><div style="background:#16a34a;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:900;letter-spacing:.12em;padding:3px 8px;border-radius:4px;">PRO</div></div></div></div>
     <div class="footer-links">
     <a href="javascript:void(0)" onclick="scrollToSection('steps');return false;">How it works</a>
-    <a href="javascript:void(0)" onclick="scrollToSection('pricing-new');return false;">Pricing</a>
+    <a href="pricing.html">Pricing</a>
     <a href="javascript:void(0)" onclick="scrollToSection('faq-new');return false;">FAQ</a>
     <a href="#" onclick="showPolicyModal('privacy');return false;">Privacy</a>
     <a href="#" onclick="showPolicyModal('terms');return false;">Terms</a>
@@ -1109,17 +1217,6 @@ Could you spare 30 seconds to rate us? It means the world to small businesses li
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Recent sends -->
-      <div class="card" style="margin-top:1.25rem;">
-        <div class="card-header">
-          <div class="card-title">Recent Sends</div>
-          <div style="display:flex;gap:.5rem;">
-            <button class="btn-sm" onclick="exportCSV()" title="Export to CSV">⬇ Export</button>
-          </div>
-        </div>
-        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Phone</th><th>Sent at</th><th>Status</th></tr></thead><tbody id="send-table"><tr><td colspan="4" style="text-align:center;color:#9ca3af;padding:1.5rem;font-size:.83rem;">No messages sent yet. Send your first one above!</td></tr></tbody></table></div>
       </div>
 
       <!-- CSV Bulk Upload -->
